@@ -70,7 +70,9 @@
 
   /* ---------- sayaçlar ---------- */
   var counters = document.querySelectorAll('.count');
-  if (counters.length && 'IntersectionObserver' in window) {
+  // Keep the rendered totals when animation is unavailable or unwanted.
+  var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (counters.length && !reducedMotion && 'IntersectionObserver' in window) {
     var cio = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
         if (!en.isIntersecting) return;
