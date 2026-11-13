@@ -1,0 +1,80 @@
+/* Seafort sustainability: large photography, readable sections, three clear priorities. */
+.sustainability-page .site-header,.sustainability-page .site-header.scrolled{background:#fff;color:#075d89;border-color:#d7e2e8}
+.sustainability-page .brand::after{opacity:1}.sustainability-page .logo-light,.sustainability-page .logo-dark{opacity:0}
+.sustainability-page .brochure-rail{inset-block-start:117px}
+.sustainability-page main h2{font-size:clamp(32px,3.4vw,48px);line-height:1.22;letter-spacing:-1.1px}
+.sustainability-page main h3{font-size:27px;line-height:1.35;letter-spacing:-.5px}
+.sustainability-page section[id]{scroll-margin-top:85px}
+.sustain-hero{position:relative;isolation:isolate;min-height:650px;display:flex;align-items:center;overflow:hidden;color:#fff;padding:156px 0 94px}
+.sustain-hero-image{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;object-position:50% 48%}
+.sustain-hero-shade{position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(3,30,48,.92) 0%,rgba(3,39,59,.72) 47%,rgba(3,36,55,.17) 100%)}
+.sustain-hero-content{width:min(1480px,calc(100% - 64px))}
+.sustain-hero .breadcrumbs{font-size:12px;margin-bottom:72px;color:#d1e4ee}
+.sustain-hero-copy{max-width:920px}.sustain-hero-copy .eyebrow{color:#c7e7f5;font-size:12px;margin-bottom:18px}
+.sustain-hero h1{font-size:clamp(58px,6.8vw,104px);font-weight:700;line-height:1.1;letter-spacing:-3px;margin-bottom:26px}
+.sustain-hero-intro{font-size:21px;line-height:1.8;max-width:580px;color:#f2f7fa;margin-bottom:32px}
+.sustain-outline{display:inline-flex;align-items:center;justify-content:center;gap:18px;min-height:48px;padding:13px 20px;border:1px solid #0372A8;color:#0372A8;font-size:14px;font-weight:500;line-height:1.5;background:transparent;border-radius:2px}
+.sustain-outline svg,.sustain-card-link svg{height:20px;width:20px;fill:none;stroke:currentColor;stroke-width:1.5;flex-shrink:0}
+.sustain-outline:hover{background:#edf7fb}.sustain-outline-light{border-color:#d8e9f3;color:#fff}.sustain-outline-light:hover{background:#ffffff16}
+.sustain-jump{position:sticky;top:94px;z-index:18;background:#fff;border-bottom:1px solid #d8e4ec}
+.sustain-jump>.wrap{display:flex;gap:48px;align-items:center;overflow-x:auto;scrollbar-width:thin}
+.sustain-jump a{font-size:14px;font-weight:500;color:#456878;padding:24px 0;white-space:nowrap;position:relative}
+.sustain-jump a:hover{color:#0372A8}.sustain-jump a:hover:after{content:'';position:absolute;inset:auto 0 0;height:3px;background:#0372A8}
+.sustain-overview{background:#edf3f7;padding:94px 0 90px}.sustain-reading{max-width:1120px}
+.sustain-overview h2{max-width:980px;color:#123d55;margin-bottom:28px}.sustain-lead{font-size:19px;line-height:1.95;color:#486471;max-width:88ch;margin-bottom:30px}
+.sustain-focus{padding:96px 0 104px;background:#f7f9fb}
+.sustain-section-heading{display:flex;justify-content:space-between;align-items:flex-end;gap:60px;margin-bottom:42px}
+.sustain-section-heading>div{max-width:750px}.sustain-section-heading>p{font-size:16px;line-height:1.9;max-width:400px;color:#516f7d}
+.sustain-pillar-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px}
+.sustain-pillar{background:#fff;display:flex;flex-direction:column;min-width:0;border:1px solid #e0e8ee}
+.sustain-pillar-photo{display:block;overflow:hidden;aspect-ratio:4/3}
+.sustain-pillar-photo img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.sustain-pillar:hover .sustain-pillar-photo img{transform:scale(1.025)}
+.sustain-pillar-copy{padding:28px 26px 30px;display:flex;flex-direction:column;flex:1}
+.sustain-pillar-copy .eyebrow{font-size:10px;letter-spacing:1.5px;margin-bottom:15px}
+.sustain-pillar h3{margin-bottom:18px;color:#123d55}.sustain-pillar h3 a:hover{color:#0372A8}
+.sustain-pillar-copy>p:not(.eyebrow){font-size:15px;line-height:1.9;color:#506b78;margin-bottom:27px}
+.sustain-card-link{display:inline-flex;align-items:center;gap:14px;color:#0372A8;font-size:13px;font-weight:600;line-height:1.6;align-self:flex-start}
+.sustain-pillar .sustain-card-link{margin-top:auto}.sustain-card-link:hover{text-decoration:underline;text-underline-offset:5px}
+.sustain-approach{padding:106px 0;background:#fff}
+.sustain-approach-grid{display:grid;grid-template-columns:1.08fr 1fr;gap:76px;align-items:center}
+.sustain-approach-grid figure{height:520px;overflow:hidden;margin:0;position:relative}
+.sustain-approach-grid figure:after{content:'';position:absolute;left:0;bottom:0;background:#0372A8;width:80px;height:8px}
+.sustain-approach-grid img{height:100%;width:100%;object-fit:cover}
+.sustain-approach-copy h2{margin-bottom:28px;max-width:600px}.sustain-approach-copy>p:not(.eyebrow){font-size:17px;line-height:1.95;color:#506b78;margin-bottom:30px;max-width:60ch}
+.sustain-principles{background:#103447;color:#fff;padding:92px 0 102px}
+.sustain-principles .sustain-section-heading>p{color:#c6dce7}.sustain-principles h2{max-width:850px}
+.sustain-principle-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:48px;margin-top:56px}
+.sustain-principle-grid article{border-top:1px solid #ffffff45;padding-top:24px}
+.sustain-step{display:block;font-family:var(--heading);font-size:38px;color:#7ac7e9;line-height:1.4;margin-bottom:25px}
+.sustain-principle-grid h3{font-size:25px;margin-bottom:18px;max-width:340px}.sustain-principle-grid p{font-size:15px;line-height:1.9;color:#c6dce7;max-width:42ch}
+.sustain-documents{padding:98px 0;background:#edf3f7}
+.sustain-documents-grid{display:grid;grid-template-columns:1fr 1fr;gap:90px;align-items:center}
+.sustain-document-heading>svg{width:64px;height:72px;fill:none;stroke:#218DB7;stroke-width:2;margin-bottom:28px}
+.sustain-document-heading h2{max-width:600px}.sustain-documents-copy>p{font-size:18px;line-height:1.95;color:#506b78;max-width:58ch;margin-bottom:30px}
+.sustain-document-actions{display:flex;flex-wrap:wrap;align-items:center;gap:24px}
+.sustain-document-actions small{font-size:10px;border-left:1px solid #b6cfdd;padding-left:14px}
+.sustain-document-pending{border-color:#b6cad5;color:#607d8c;cursor:default}.sustain-document-pending:hover{background:transparent}
+@media(min-width:1600px){.sustain-hero{min-height:730px}.sustain-hero .breadcrumbs{margin-bottom:88px}.sustain-pillar-copy{padding:32px}.sustain-approach-grid{gap:110px}}
+@media(max-width:1180px){.sustainability-page .brochure-rail{inset-block-start:94px}.sustainability-page .primary-nav{color:#fff}.sustainability-page .primary-nav .nav-link.active{color:#8bd0ee}.sustain-jump{top:78px}.sustain-hero-content{width:calc(100% - 64px)}.sustain-hero{min-height:610px;padding-top:146px}.sustain-hero h1{font-size:72px}.sustain-hero .breadcrumbs{margin-bottom:64px}.sustain-pillar-grid{gap:20px}.sustain-pillar-copy{padding:25px 20px}.sustainability-page main h3{font-size:23px}.sustain-approach-grid{gap:42px}.sustain-approach-grid figure{height:490px}.sustain-documents-grid{gap:50px}.sustain-principle-grid{gap:30px}}
+@media(max-width:760px){
+ .sustainability-page .brochure-rail{inset-block-start:90px}.sustain-hero{min-height:560px;padding:142px 0 66px;align-items:flex-start}.sustain-hero-content{width:calc(100% - 40px)}
+ .sustain-hero .breadcrumbs{font-size:11px;margin-bottom:54px}.sustain-hero h1{font-size:clamp(37px,8.8vw,62px);letter-spacing:-1.7px;margin-bottom:22px}.sustain-hero-intro{font-size:17px;line-height:1.85;max-width:390px;margin-bottom:28px}.sustain-hero-shade{background:linear-gradient(90deg,#092e42eb,#092e429c 80%,#092e4270)}.sustain-hero-image{object-position:56% 50%}
+ .sustain-jump>.wrap{gap:28px}.sustain-jump a{font-size:12px;padding:19px 0}.sustain-overview,.sustain-focus,.sustain-approach,.sustain-principles,.sustain-documents{padding-block:64px}
+ .sustainability-page main h2{font-size:32px;letter-spacing:-.7px}.sustain-overview h2{margin-bottom:24px}.sustain-lead{font-size:16px;line-height:1.95}.sustain-outline{font-size:13px;min-height:46px;padding:12px 17px}
+ .sustain-section-heading{flex-direction:column;align-items:flex-start;gap:24px;margin-bottom:34px}.sustain-section-heading>p{max-width:100%;font-size:15px}
+ .sustain-pillar-grid{grid-template-columns:1fr;gap:30px}.sustain-pillar-photo{aspect-ratio:16/10}.sustain-pillar-copy{padding:26px 24px}.sustainability-page .sustain-pillar h3{font-size:28px}.sustain-pillar-copy>p:not(.eyebrow){font-size:15px}
+ .sustain-approach-grid{grid-template-columns:1fr;gap:34px}.sustain-approach-grid figure{height:330px}.sustain-approach-copy>p:not(.eyebrow){font-size:16px}.sustain-principle-grid{grid-template-columns:1fr;gap:34px;margin-top:38px}.sustain-step{font-size:32px;margin-bottom:18px}.sustain-principle-grid h3{font-size:25px;max-width:100%}.sustain-principle-grid p{max-width:100%}
+ .sustain-documents-grid{grid-template-columns:1fr;gap:28px}.sustain-document-heading>svg{width:54px;height:60px;margin-bottom:24px}.sustain-documents-copy>p{font-size:16px}.sustain-document-actions{align-items:flex-start;flex-direction:column;gap:24px}
+}
+html[dir=rtl] .sustain-hero-shade{background:linear-gradient(270deg,rgba(3,30,48,.92),rgba(3,39,59,.72) 47%,rgba(3,36,55,.17))}
+html[dir=rtl] .sustain-card-link svg,html[dir=rtl] .sustain-outline:not(.sustain-outline-light) svg{transform:scaleX(-1)}
+html[lang='zh-CN'] .sustain-hero h1{font-size:clamp(44px,6.5vw,90px);letter-spacing:0}
+html[lang='ru'] .sustain-hero h1{font-size:clamp(40px,5.4vw,82px);overflow-wrap:anywhere;letter-spacing:-1.5px}
+html[lang='tr'] .sustain-hero h1{font-size:clamp(32px,6vw,92px);overflow-wrap:anywhere}
+.sustainability-page main h2,.sustainability-page main h3,.sustainability-page main p{overflow-wrap:anywhere}
+.sustain-card-link,.sustain-outline{max-width:100%;min-width:0;overflow-wrap:anywhere}
+.sustainability-page .footer-top>*{min-width:0}
+.sustainability-page .footer-social{max-width:100%}
+.sustainability-page .footer-links a{overflow-wrap:anywhere}
+@media(prefers-reduced-motion:reduce){.sustain-pillar-photo img{transition:none}.sustain-pillar:hover .sustain-pillar-photo img{transform:none}}

@@ -1,0 +1,35 @@
+/* Brandbook palette and supplied Poppins / Montserrat fonts. */
+:root{--blue:#0372A8;--blue-hover:#005b87;--secondary-blue:#218DB7;--heading:'Montserrat','Poppins',Arial,sans-serif;--body:'Poppins',Arial,sans-serif}
+.wrap{width:min(1480px,calc(100% - 64px))}
+.section{padding-block:104px}
+.brand{position:relative;width:190px;flex-shrink:0;margin-inline-end:12px}
+.brand::after{content:'';position:absolute;inset:0;opacity:0;background:#0372A8;-webkit-mask:url('/assets/logo-dark.png') center/contain no-repeat;mask:url('/assets/logo-dark.png') center/contain no-repeat;pointer-events:none}
+.scrolled .brand::after{opacity:1}.scrolled .logo-dark{opacity:0}
+.primary-nav{gap:22px}.nav-link{font-size:13px}.header-inner{gap:20px}
+.section-description{max-width:560px;font-size:16px;line-height:1.9}
+.service-grid{gap:32px 44px}.service{padding:28px 0}.service h3{font-size:28px;line-height:1.35;letter-spacing:-.6px}.service p{max-width:42ch}
+.service-directory{gap:32px}.directory-copy p{max-width:65ch}
+.page-hero-grid{gap:72px;grid-template-columns:1.1fr 1fr}.page-hero-copy>p:not(.eyebrow){max-width:58ch}
+.detail-layout{column-gap:90px}.detail-sections{max-width:880px}.detail-row p,.detail-row .scope-list{max-width:70ch}
+.focus-row{gap:72px}.focus-row h2{font-size:36px}
+.brochure-rail{position:absolute;inset-block-start:115px;left:50%;transform:translateX(-50%);z-index:12;display:flex;justify-content:flex-end;pointer-events:none}
+.brochure-button{display:inline-flex;align-items:center;gap:9px;pointer-events:auto;min-height:38px;padding:8px 13px;background:#fff;color:#0372A8;border:1px solid #d8e6ed;border-radius:4px;font:500 12px/1.4 var(--body);box-shadow:0 4px 18px #09273512}
+.brochure-button svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.6;flex-shrink:0}.brochure-button small{font-size:9px;border-inline-start:1px solid #ccdce5;padding-inline-start:8px;letter-spacing:.5px}
+.brochure-button:not(:disabled):hover{background:#edf7fc;border-color:#218DB7}.brochure-pending{color:#516d7c;background:#f3f7f9;cursor:default;box-shadow:none}
+.whatsapp-tab{position:fixed;right:0;top:52%;z-index:55;display:flex;flex-direction:column;align-items:center;gap:12px;max-height:280px;padding:17px 11px;background:#0372A8;color:#fff;border-radius:8px 0 0 8px;box-shadow:-3px 4px 20px #09273526}
+.whatsapp-tab svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.5}.whatsapp-tab span{font-size:12px;font-weight:500;writing-mode:vertical-rl;transform:rotate(180deg);line-height:1.4;max-height:180px;overflow:hidden}.whatsapp-tab:hover{background:#005b87}
+.brochure-selector{margin-bottom:24px;max-width:1100px}.brochure-select-row{display:flex;gap:16px;align-items:center}.brochure-select-row select{flex:1}.brochure-editor{max-width:1100px}.brochure-editor h2{margin-bottom:28px}.brochure-current{display:flex;flex-wrap:wrap;gap:20px;align-items:center;padding:20px;background:#edf5f8;border:1px solid #c4dce8}.brochure-current .checkbox-label{flex-basis:100%}.brochure-current input[type=checkbox]{width:auto}
+html[lang='zh-CN'] .carousel-title{font-size:clamp(40px,4.4vw,66px);line-height:1.3}html[lang='zh-CN'] .eyebrow{letter-spacing:1px}
+@media(min-width:1181px) and (max-width:1400px){.brand{width:165px;margin-inline-end:0}.primary-nav{gap:15px}.nav-link{font-size:12px}.header-inner{gap:15px}.language-picker select{max-width:108px}.button-small{padding-inline:14px;font-size:12px}}
+@media(max-width:1180px){
+ .wrap{width:calc(100% - 64px)}.header-inner{height:78px}.brand{width:165px;margin:0}
+ .menu-toggle{display:flex;flex-direction:column;justify-content:center;gap:7px;width:44px;height:44px;border:0;background:transparent;padding:8px;color:inherit}
+ .menu-toggle span{height:2px;width:26px;display:block;background:currentColor}.menu-toggle[aria-expanded=true] span:first-child{transform:translateY(4.5px) rotate(45deg)}.menu-toggle[aria-expanded=true] span:last-child{transform:translateY(-4.5px) rotate(-45deg)}
+ .primary-nav{display:none;position:absolute;top:78px;left:0;right:0;background:var(--deep);color:#fff;padding:18px 32px 26px;box-shadow:0 20px 30px #0002;max-height:calc(100svh - 78px);overflow-y:auto}.primary-nav.open{display:flex;flex-direction:column;align-items:stretch;gap:2px}.primary-nav .nav-link{font-size:15px;display:flex;align-items:center;justify-content:space-between;width:100%;padding:12px 0}.primary-nav>.button{margin-top:12px;min-height:48px}.nav-link.active:after{display:none}.scrolled .primary-nav{color:#fff}.scrolled .language-picker select{background:#103447;color:#fff}
+ .brochure-rail{inset-block-start:94px}.page-hero-grid{gap:40px}.detail-layout{column-gap:46px}.focus-row{gap:40px}
+}
+@media(min-width:1600px){.service-grid{gap:40px 64px}.section-intro{margin-bottom:58px}.page-hero-photo{height:470px}}
+@media(max-width:760px){.wrap{width:calc(100% - 40px)}.section{padding-block:68px}.page-hero-grid{grid-template-columns:1fr;gap:32px}.page-hero-copy{padding-top:6px}.service-grid{grid-template-columns:1fr}.service{padding-block:20px}.service h3{font-size:27px}.service-directory{gap:24px}.section-description{font-size:15px}.focus-row{gap:28px}.focus-row h2{font-size:30px}.brochure-button{padding:7px 10px;font-size:11px;min-height:34px}.brochure-rail{inset-block-start:90px}.brochure-select-row{align-items:stretch;flex-direction:column}.whatsapp-tab{padding:12px 8px;gap:9px}.whatsapp-tab svg{width:21px;height:21px}.whatsapp-tab span{font-size:11px}.header-inner{gap:12px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+
+@media(min-width:761px){.service-directory>.directory-card:last-child:nth-child(odd){grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr}.service-directory>.directory-card:last-child:nth-child(odd) .directory-image{height:100%;min-height:340px}}

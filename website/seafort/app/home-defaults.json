@@ -1,0 +1,177 @@
+{
+  "meta": {
+    "title": "Marine & Offshore Repair and Maintenance",
+    "description": "Seafort supports marine and offshore projects with steelwork, repair, maintenance, equipment installation and technical services.",
+    "hero_title": "Marine repair. Offshore support.",
+    "hero_link_label": "Explore Our Services",
+    "hero_positioning": "From workshop preparation",
+    "hero_positioning_emphasis": "to onboard installation."
+  },
+  "services": {
+    "eyebrow": "OUR SERVICES",
+    "title": "The support your\nproject needs.",
+    "description": "Repair, construction and offshore project support, from workshop preparation to onboard installation.",
+    "items": [
+      {
+        "title": "Maintenance & Repair",
+        "body": "Steel renewal, tank and deck preparation, protective coatings, piping and equipment installation.",
+        "label": "View Service",
+        "link_href": "/maintenance-repair/"
+      },
+      {
+        "title": "Underwater Marine Services",
+        "body": "Hull and structure inspections, cleaning, propeller work and underwater repair support.",
+        "label": "View Service",
+        "link_href": "/marine-services-2/"
+      },
+      {
+        "title": "Ship Supply & Rental",
+        "body": "Marine equipment, spare parts and vessel stores, with equipment and operator rental enquiries.",
+        "label": "View Service",
+        "link_href": "/ship-supply/"
+      },
+      {
+        "title": "Ship Construction Support",
+        "body": "Steel fabrication, pipework and installation support within the shipyard construction programme.",
+        "label": "View Service",
+        "link_href": "/ship-construction/"
+      },
+      {
+        "title": "Rigging & Oilfield Support",
+        "body": "Component handling, positioning and steelwork support for offshore work scopes.",
+        "label": "View Service",
+        "link_href": "/rigging-oilfield/"
+      },
+      {
+        "title": "Shipyard Services",
+        "body": "Repair, surface treatment and trade teams coordinated with the shipyard work sequence.",
+        "label": "View Service",
+        "link_href": "/shipyard-services/"
+      }
+    ]
+  },
+  "fpu": {
+    "eyebrow": "FPU STEEL WORKS",
+    "title": "Steelwork for\nFPU projects.",
+    "description": "Steel renewal and modification for FPU structures, from workshop preparation to welding at the onboard work location.",
+    "detail": "Affected sections are removed and replacement components prepared to the engineering drawings. Installation includes welding, grinding and finishing to suit the existing structure, with pipe supports and scaffolding arranged around the work.",
+    "poster": "/assets/video/seafort-introduction-en.jpg",
+    "poster_alt": "Seafort marine and offshore company introduction",
+    "video_url": "/assets/video/seafort-introduction-en.mp4",
+    "video_caption": "An introduction to Seafort, with photographs from marine and offshore projects.",
+    "label": "Discuss FPU Steelwork",
+    "link_href": "/get-a-quote/"
+  },
+  "capabilities": {
+    "eyebrow": "FIELD CAPABILITIES",
+    "title": "The work behind\nour services.",
+    "description": "See how steelwork, surface treatment and installation connect across the project.",
+    "items": [
+      {
+        "tab": "Steel & Structural Repair",
+        "eyebrow": "REPAIR & FABRICATION",
+        "title": "Steel renewal.\nStructural repair.",
+        "body": "Corroded or damaged sections are removed and renewed to the repair drawings. Workshop preparation leads into onboard welding, grinding and finishing.",
+        "image": "/assets/archive/internal-welding.webp",
+        "image_alt": "Welder working on an internal steel structure",
+        "image_label": "STEEL & STRUCTURAL WORK",
+        "list": [
+          "Tank and plate renewal",
+          "Structural element replacement",
+          "Local reinforcement and fabrication"
+        ],
+        "label": "Explore Repair Services",
+        "link_href": "/maintenance-repair/"
+      },
+      {
+        "tab": "Surface Preparation & Coatings",
+        "eyebrow": "CORROSION PROTECTION",
+        "title": "Prepare the surface.\nProtect the structure.",
+        "body": "Tank and deck cleaning, washing and drying prepare the area for the specified treatment. Abrasive or mechanical preparation is followed by spray, brush, roller and local touch-up coating.",
+        "image": "/assets/archive/local-coating.webp",
+        "image_alt": "Coating work from scaffold access on an offshore structure",
+        "image_label": "SURFACE PREPARATION & COATINGS",
+        "list": [
+          "Abrasive and mechanical preparation",
+          "High-pressure water cleaning",
+          "Marine protective coating application"
+        ],
+        "label": "Explore Coating Services",
+        "link_href": "/maintenance-repair/"
+      },
+      {
+        "tab": "Equipment Installation",
+        "eyebrow": "INSTALLATION SUPPORT",
+        "title": "Equipment foundations.\nOnboard installation.",
+        "body": "Fabricated foundations and supports connect equipment and modules to the structure. Installation brings together lifting, fitting and the associated piping or mechanical connections.",
+        "image": "/assets/archive/installation-lifting.webp",
+        "image_alt": "Crane handling of a fabricated steel assembly",
+        "image_label": "OFFSHORE EQUIPMENT & MODULES",
+        "list": [
+          "Equipment foundations and supports",
+          "Industrial module installation",
+          "Associated piping and mechanical work"
+        ],
+        "label": "Discuss an Installation",
+        "link_href": "/get-a-quote/"
+      }
+    ]
+  },
+  "process": {
+    "eyebrow": "WORKING WITH SEAFORT",
+    "title": "From enquiry\nto the work site.",
+    "description": "Bring the asset details, drawings and dates together so the work can be planned.",
+    "items": [
+      {
+        "title": "Tell Us What You Need",
+        "body": "Share the vessel, location, planned dates and the repair or installation task."
+      },
+      {
+        "title": "Define the Scope",
+        "body": "Review drawings, access, personnel, equipment and inspection needs with our team."
+      },
+      {
+        "title": "Coordinate the Work",
+        "body": "Connect workshop preparation, site activities and the required handover records."
+      }
+    ]
+  },
+  "values": {
+    "eyebrow": "HOW WE WORK",
+    "title": "Safety and environmental responsibility.",
+    "body": "Site risks, access and environmental controls inform the work plan. Clear responsibilities and communication help people understand the task.",
+    "label": "Our Sustainability Approach",
+    "link_href": "/sustainability/"
+  },
+  "blog": {
+    "eyebrow": "FROM THE BLOG",
+    "title": "Notes from\nmarine operations.",
+    "label": "All Articles",
+    "description": "Maritime news and clear explanations of maintenance, underwater work and technical supply.",
+    "page_eyebrow": "SEAFORT JOURNAL"
+  },
+  "careers": {
+    "eyebrow": "JOIN OUR TEAM",
+    "title": "Bring your skills to Seafort.",
+    "body": "Explore shore-based and sea-going opportunities with our team.",
+    "label": "Explore Careers",
+    "link_href": "/careers/"
+  },
+  "quote": {
+    "eyebrow": "LET’S TALK ABOUT THE WORK",
+    "title": "Tell us about\nyour next project.",
+    "body": "Tell us what needs doing, where and when. Add drawings or photographs to help explain the task.",
+    "label": "Request a Quote",
+    "link_href": "/get-a-quote/"
+  },
+  "projects": {
+    "eyebrow": "PROJECTS",
+    "title": "A closer look\nat the work.",
+    "description": "Photographs and project notes from marine and offshore work.",
+    "directory_eyebrow": "PROJECT JOURNAL",
+    "directory_title": "Projects\nin focus.",
+    "directory_intro": "Explore the work described and photographed by our team.",
+    "empty_title": "Project updates are being prepared.",
+    "empty_body": "Contact our team to discuss a repair, fabrication or installation project."
+  }
+}

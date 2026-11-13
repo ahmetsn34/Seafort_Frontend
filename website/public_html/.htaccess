@@ -1,0 +1,27 @@
+Options -Indexes
+DirectoryIndex index.php
+
+<IfModule mod_authz_core.c>
+Require all granted
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+</IfModule>
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+# Production HTTPS and canonical domain; origin must report HTTPS correctly.
+RewriteCond %{HTTPS} !=on [OR]
+RewriteCond %{HTTP_HOST} !^seafortservice\.com$ [NC]
+RewriteRule ^ https://seafortservice.com%{REQUEST_URI} [R=301,L,NE]
+
+RewriteRule ^sitemap\.xml$ index.php [L,QSA]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [L,QSA]
+</IfModule>
+
+<IfModule mod_headers.c>
+Header always set X-Content-Type-Options "nosniff"
+Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>

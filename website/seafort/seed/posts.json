@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "posts": [
+    {
+      "id": "1086",
+      "slug": "essential-ship-supply-services-for-seamless-maritime-operations",
+      "title": "What to Include in a Marine Technical Supply Request",
+      "excerpt": "Part numbers, quantities and delivery details help a supplier review the request. A clear specification also makes proposed alternatives easier to assess.",
+      "body": "## Describe the item clearly\n\nStart with the item description and its intended use. Include the manufacturer, equipment model and part number where available. Drawings, photographs and the existing nameplate can help distinguish similar components.\n\n## Include the order requirements\n\nA supply request should explain what is needed and where it is required.\n\n- Item description and part or model number\n- Quantity and unit of measure\n- Vessel or project location\n- Required delivery date\n- Any certificates or documentation requested\n\n## Review alternatives before approval\n\nIf an exact item is unavailable, an alternative may need technical review. Confirm dimensions, materials, performance requirements and the documentation expected before accepting a substitution. Availability and lead time should be confirmed for the actual request.\n\n## Treat rental as a separate work scope\n\nFor cranes, forklifts, compressors or generators, include the task, required capacity, duration, work location and any operator requirement. This gives the rental discussion a practical starting point.",
+      "category": "Technical Supply",
+      "status": "published",
+      "cover": "/assets/archive/flanged-pipework.webp",
+      "published_at": "2025-03-29T10:18:00+00:00",
+      "created_at": "2025-03-29T10:18:00+00:00",
+      "updated_at": "2025-03-29T10:18:00+00:00"
+    },
+    {
+      "id": "1077",
+      "slug": "essential-maintenance-tips-for-the-longevity-of-your-marine-vehicles",
+      "title": "Planning Structural and Corrosion Maintenance for Marine Assets",
+      "excerpt": "A maintenance scope is easier to plan when inspection findings, operating needs and acceptance requirements are clear. Structural repairs and coatings deserve that same preparation.",
+      "body": "## Use condition information to define the work\n\nAvailable inspection records, photographs and previous repair information help the project team understand the asset. Separate observations from the proposed repair so that the technical assessment and responsibilities remain clear.\n\n## Plan structural repairs around the asset\n\nCorroded plate, damaged structural elements and local reinforcement needs require an asset-specific scope. Material, access, engineering and inspection requirements should be established before the repair is agreed. A general blog cannot replace that technical assessment.\n\n## Treat preparation and coating as one system\n\nSurface condition, preparation method and the specified coating system need to be considered together. Define the areas to be treated, access needs and the records required for inspection and acceptance.\n\n## Make the maintenance request useful\n\nBring the technical and operational information together before discussing the work.\n\n- Vessel or asset details and work location\n- Inspection findings and affected areas\n- Drawings or equipment information\n- Target dates and access constraints\n- Required inspection and handover records",
+      "category": "Maintenance & Repair",
+      "status": "published",
+      "cover": "/assets/archive/steel-condition.webp",
+      "published_at": "2025-03-29T10:11:34+00:00",
+      "created_at": "2025-03-29T10:11:34+00:00",
+      "updated_at": "2025-03-29T10:11:34+00:00"
+    },
+    {
+      "slug": "imo-cape-town-workshop-biofouling-management-2026",
+      "title": "Cape Town Workshop Focuses on Responsible Hull Cleaning",
+      "excerpt": "An IMO-supported workshop brought representatives from 12 countries together to discuss biofouling management, cleaning technology and environmental safeguards.",
+      "category": "Maritime News",
+      "body": "## A practical discussion on hull maintenance\n\nGovernment representatives from 12 countries joined industry specialists and technology providers in Cape Town, South Africa, for an in-water cleaning demonstration and workshop held on 5–8 October 2026. According to the International Maritime Organization (IMO), the event supported implementation of its Biofouling Guidelines.\n\nDelivered through the IMO–Norad TEST Biofouling Project, the workshop combined technical discussions with live cleaning demonstrations by licensed South African service providers. Participants compared regulatory approaches and considered how approvals, reporting and regional cooperation could support responsible cleaning operations.\n\n## Why biofouling management matters\n\nBiofouling is the accumulation of organisms on submerged surfaces. Ships can carry these organisms between locations, creating a risk that invasive species will become established in new environments. IMO also identifies hull fouling as a factor that increases resistance through the water, affecting fuel use and emissions.\n\nCleaning requires careful planning. IMO notes that in-water methods can damage anti-fouling coatings and release organisms or other material into the surrounding water. Its guidance therefore addresses environmental protection alongside the cleaning task.\n\n## The maintenance perspective\n\nFor teams reviewing a hull-cleaning proposal, these developments underline the value of checking the surface condition, coating compatibility and local requirements before selecting a method. This is a practical takeaway from the discussion; the workshop report does not establish that one cleaning technology suits every vessel.",
+      "status": "published",
+      "id": "imo-biofouling-20261104",
+      "cover": "/assets/project/underwater-hull-detail.webp",
+      "cover_alt": "Illustrative underwater view from the Seafort archive; not an image of the Cape Town workshop",
+      "published_at": "2026-11-04T09:00:00+00:00",
+      "created_at": "2026-11-04T09:00:00+00:00",
+      "updated_at": "2026-11-04T09:00:00+00:00"
+    }
+  ]
+}

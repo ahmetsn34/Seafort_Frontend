@@ -1,0 +1,744 @@
+{
+  "pages": [
+    {
+      "slug": "about",
+      "title": "Marine work, from workshop to onboard.",
+      "eyebrow": "ABOUT SEAFORT",
+      "intro": "Seafort supports vessels and offshore structures with repair, maintenance, fabrication and installation. Our work connects workshop preparation with the tasks carried out on board.",
+      "sections": [
+        {
+          "title": "Services that work together",
+          "body": "Steel repairs, surface preparation, coatings and equipment installation often share the same work area. We bring these activities together with underwater services and technical supply.",
+          "list": [
+            "Repair and maintenance",
+            "Marine fabrication and installation",
+            "Underwater services and technical supply"
+          ]
+        },
+        {
+          "title": "People and coordination",
+          "body": "The technical team, equipment and access arrangements are planned around the vessel and the work location. Coordination connects each activity with the next.",
+          "list": [
+            "Technical and operational personnel",
+            "Workshop and onboard coordination"
+          ]
+        },
+        {
+          "title": "Tell us what needs doing",
+          "body": "Send the asset details, location, drawings and planned dates. Our team can review the repair or installation support you need."
+        }
+      ],
+      "cta": {
+        "label": "Discuss Your Project",
+        "href": "/get-a-quote/"
+      },
+      "cover": "/assets/archive/site-team.webp",
+      "cover_alt": "Personnel coordinating work in a marine work area",
+      "detail_eyebrow": "OUR APPROACH",
+      "detail_title": "Preparation. People. Onboard work.",
+      "detail_intro": ""
+    },
+    {
+      "slug": "values",
+      "title": "Our Values",
+      "eyebrow": "OUR APPROACH",
+      "intro": "Clear communication, attention to the work and care for people guide our approach to marine and offshore projects.",
+      "sections": [
+        {
+          "title": "Communicate changes clearly",
+          "body": "A closer inspection can reveal additional work. We discuss changes with the project team, explain their effect and agree the next steps."
+        },
+        {
+          "title": "Pay attention to the details",
+          "body": "Preparation, drawings and the specified materials guide the work. Inspection requirements and handover records are agreed for each assignment."
+        },
+        {
+          "title": "Safety and environmental responsibility",
+          "body": "Site risks, access and environmental controls are considered when planning the work. The people involved need to understand the task and the procedures that apply."
+        }
+      ],
+      "cta": {
+        "label": "Discuss Your Project",
+        "href": "/get-a-quote/"
+      },
+      "cover": "/assets/archive/prepared-gratings.webp",
+      "cover_alt": "Prepared gratings and access components arranged on deck",
+      "detail_eyebrow": "OUR APPROACH",
+      "detail_title": "The principles behind the work.",
+      "detail_intro": ""
+    },
+    {
+      "slug": "manpower-team",
+      "title": "Manpower & Team",
+      "eyebrow": "PEOPLE FOR THE PROJECT",
+      "intro": "Skilled personnel for marine and offshore work, supported by practical experience on board, in ports and in workshops.",
+      "sections": [
+        {
+          "title": "Steel, piping & mechanical trades",
+          "body": "Hands-on personnel for fabrication, repair and installation activities.",
+          "list": [
+            "Welders and steel fitters",
+            "Pipe fitters and mechanical technicians",
+            "Electricians"
+          ]
+        },
+        {
+          "title": "Surface preparation & site access",
+          "body": "Teams for cleaning, coating and access work, coordinated with the site requirements.",
+          "list": [
+            "Painters, blasters and tank cleaners",
+            "High-pressure washing operators",
+            "Scaffolders and rope-access technicians",
+            "Riggers and lifting-equipment operators"
+          ]
+        },
+        {
+          "title": "Technical & project support",
+          "body": "Specialist roles for inspection, engineering and day-to-day project coordination.",
+          "list": [
+            "Naval engineering support",
+            "NDT inspection personnel",
+            "Quality, health, safety and environmental roles",
+            "Diving personnel for underwater activities"
+          ]
+        },
+        {
+          "title": "Plan your team with us",
+          "body": "Tell us what needs to be done, where and when. We will review the personnel requirements with you.",
+          "list": [
+            "Scope of work and required trades",
+            "Team size, location and proposed dates",
+            "Required qualifications and site access conditions",
+            "Mobilisation and reporting arrangements"
+          ]
+        }
+      ],
+      "cta": {
+        "label": "Discuss Your Project",
+        "href": "/get-a-quote/"
+      },
+      "cover": "/assets/archive/skilled-trades.webp",
+      "cover_alt": "Two welders working on steel components at a marine worksite",
+      "detail_eyebrow": "A COORDINATED WORKFORCE",
+      "detail_title": "The right skills.\nA clear work scope.",
+      "detail_intro": "From individual specialists to coordinated trade teams, personnel requirements are matched to the work, location and project schedule.",
+      "stats": [
+        {
+          "value": "1,500+",
+          "label": "Skilled employees"
+        },
+        {
+          "value": "20+",
+          "label": "Years of marine experience"
+        }
+      ]
+    },
+    {
+      "slug": "marmaris",
+      "title": "Marmaris",
+      "eyebrow": "MAINTENANCE & PROJECT SUPPORT",
+      "intro": "Planning vessel maintenance in Marmaris? Contact our team to discuss repair, coating and piping work at your proposed berth or yard.",
+      "sections": [
+        {
+          "title": "Hull and superstructure",
+          "body": "Hull and superstructure work starts with the vessel's material, condition and repair drawings.",
+          "list": [
+            "Steel and aluminium repairs and fabrication",
+            "Hull and superstructure modifications",
+            "Inspection and testing requirements"
+          ]
+        },
+        {
+          "title": "Surface preparation and coatings",
+          "body": "Preparation and painting are matched to the surface condition and specified coating system.",
+          "list": [
+            "Blasting and surface preparation",
+            "Protective coatings and topcoat application",
+            "Antifouling, polishing and local coating repairs"
+          ]
+        },
+        {
+          "title": "Piping and onboard systems",
+          "body": "Piping repairs and modifications are reviewed for the affected system, including its connections and access points.",
+          "list": [
+            "Fresh, grey and black water systems",
+            "Piping and plumbing modifications",
+            "Installation and repair support"
+          ]
+        },
+        {
+          "title": "Check the location and dates",
+          "body": "Send the vessel dimensions, proposed berth or yard, access details and dates. Availability and arrangements for the work are confirmed for your enquiry."
+        }
+      ],
+      "cta": {
+        "label": "Discuss Your Project",
+        "href": "/get-a-quote/"
+      },
+      "cover": "/assets/project/marmaris-bay.webp",
+      "cover_alt": "Scenic view across Turunç bay in the Marmaris district, Turkey",
+      "detail_eyebrow": "OUR APPROACH",
+      "detail_title": "Repair, coatings and onboard systems.",
+      "detail_intro": ""
+    },
+    {
+      "slug": "references",
+      "title": "Work in Focus",
+      "eyebrow": "FIELD CAPABILITIES",
+      "intro": "A closer look at steel renewal, protective coatings and equipment installation across marine and offshore work.",
+      "sections": [
+        {
+          "title": "Steel renewal and structural repair",
+          "body": "Affected steel is removed and renewed to the repair drawings, with preparation, welding and finishing at the work location.",
+          "list": [
+            "Tank and plate renewal",
+            "Structural elements and brackets",
+            "Deck reinforcement and local repairs"
+          ]
+        },
+        {
+          "title": "Surface preparation and corrosion protection",
+          "body": "Debris removal, washing, drying and abrasive or mechanical preparation precede coating application. The preparation grade and coating system follow the project specification."
+        },
+        {
+          "title": "Equipment foundations and module installation",
+          "body": "Fabricated foundations and supports are installed with the associated piping and mechanical connections. Lifting and access are considered alongside the installation sequence."
+        },
+        {
+          "title": "Rigging & Oilfield Support",
+          "body": "Rigging, equipment positioning and steelwork support for marine and oilfield projects, planned around the work area and the installation sequence.",
+          "list": [
+            "Component handling and positioning",
+            "Rigging support within the agreed lift plan",
+            "Coordination with the appointed lifting team"
+          ]
+        },
+        {
+          "title": "Shipyard Services",
+          "body": "Trade teams and practical work support for shipyard repair, maintenance and installation projects.",
+          "list": [
+            "Workshop and onboard steelwork",
+            "Pipe and support installation",
+            "Component preparation and assembly"
+          ]
+        }
+      ],
+      "cta": {
+        "label": "Discuss Your Project",
+        "href": "/get-a-quote/"
+      },
+      "cover": "/assets/archive/onboard-assembly.webp",
+      "cover_alt": "Personnel working around a structural assembly beneath a marine structure",
+      "detail_eyebrow": "THE WORK SCOPE",
+      "detail_title": "The work\nin focus.",
+      "detail_intro": "Steel repairs, surface treatment and installation, seen through the work itself."
+    },
+    {
+      "slug": "careers",
+      "title": "Careers & Crewing",
+      "eyebrow": "JOIN OUR TEAM",
+      "intro": "Interested in shore-based or sea-going work with Seafort? Send a current CV with your discipline, experience and availability to our recruitment team.",
+      "sections": [
+        {
+          "title": "Tell us about your experience",
+          "body": "Help recruitment understand the work you have done and the roles you are seeking.",
+          "list": [
+            "The role or discipline you are applying for",
+            "Relevant vessel, offshore or workshop experience",
+            "Current qualifications and certificates",
+            "Location, contact details and availability"
+          ]
+        },
+        {
+          "title": "Keep your application relevant",
+          "body": "Include a short introduction and relevant qualifications. The recruitment team can discuss current roles and any further information needed."
+        },
+        {
+          "title": "Recruitment contact",
+          "body": "Find Human Resources in our team directory for recruitment enquiries. For a general question, use the contact address shown on this page."
+        }
+      ],
+      "cta": {
+        "label": "Contact Recruitment",
+        "href": "/team/"
+      },
+      "cover": "/assets/archive/welder-at-work.webp",
+      "cover_alt": "Welder working on a marine steel structure",
+      "detail_eyebrow": "THE WORK SCOPE",
+      "detail_title": "Your experience. Your next role.",
+      "detail_intro": ""
+    },
+    {
+      "slug": "get-a-quote",
+      "title": "Discuss Your Project",
+      "eyebrow": "REQUEST A QUOTATION",
+      "intro": "Tell us what needs doing, where and when. Drawings, photographs and equipment details help us review your request.",
+      "sections": [
+        {
+          "title": "Start with the essentials",
+          "body": "Start with the asset and the task, then add the information available.",
+          "list": [
+            "Vessel or asset name and type",
+            "Work location and access arrangements",
+            "Target dates and operating constraints",
+            "Technical scope, drawings or equipment details"
+          ]
+        },
+        {
+          "title": "For supply and rental requests",
+          "body": "For supplies, include part numbers, quantities and delivery details. For equipment rental, add the required capacity, duration and whether an operator is needed."
+        },
+        {
+          "title": "Operations contact",
+          "body": "Send your enquiry to the contact address shown on this page, or find the appropriate department in our team directory."
+        }
+      ],
+      "cta": {
+        "label": "Find Your Contact",
+        "href": "/team/"
+      },
+      "cover": "/assets/archive/vessel-evening.webp",
+      "cover_alt": "A vessel alongside the quay in evening light",
+      "detail_eyebrow": "THE WORK SCOPE",
+      "detail_title": "The details that help us respond.",
+      "detail_intro": ""
+    },
+    {
+      "slug": "maintenance-repair",
+      "title": "Maintenance & Repair",
+      "eyebrow": "MARINE & OFFSHORE SERVICES",
+      "intro": "Steel renewal, tank and deck preparation, protective coatings and piping work for vessels and offshore assets.",
+      "sections": [
+        {
+          "title": "Steel and structural repairs",
+          "body": "Corroded or damaged steel is cut out and replaced to the engineering drawings. Workshop preparation is followed by onboard welding, grinding and finishing to suit the existing structure.",
+          "list": [
+            "Tank, deck and plate renewal",
+            "Stringers, longitudinals and brackets",
+            "Local strengthening and access modifications"
+          ]
+        },
+        {
+          "title": "Surface preparation and coatings",
+          "body": "Work can include debris removal, high-pressure water washing, drying and blasting to the specified Sa 2½ preparation grade. Spray coating is complemented by brush, roller and local touch-up application.",
+          "list": [
+            "Abrasive blasting and mechanical preparation",
+            "Tank and deck washing and cleaning",
+            "Spray, brush, roller and touch-up coatings"
+          ]
+        },
+        {
+          "title": "Piping, equipment and installation",
+          "body": "Pipe supports are prepared, welded and installed for the work location. Piping connections and equipment supports are coordinated with the surrounding installation.",
+          "list": [
+            "Piping and valve repair or replacement",
+            "Equipment foundations and supports",
+            "Equipment and module installation",
+            "Associated mechanical and electrical interfaces"
+          ]
+        },
+        {
+          "title": "Access and inspection",
+          "body": "Scaffolding is erected and modified as the steelwork and surface treatment progress. Access, inspection and handover requirements are established with the project team."
+        }
+      ],
+      "cta": {
+        "label": "Discuss Your Project",
+        "href": "/get-a-quote/"
+      },
+      "cover": "/assets/archive/structural-repair.webp",
+      "cover_alt": "Workers carrying out steelwork on a fabricated structural assembly",
+      "detail_eyebrow": "THE WORK SCOPE",
+      "detail_title": "From steel renewal to final coating.",
+      "detail_intro": ""
+    },
+    {
+      "slug": "marine-services-2",
+      "title": "Underwater Marine Services",
+      "eyebrow": "BELOW THE WATERLINE",
+      "intro": "Inspection, cleaning and repair support for vessel hulls, appendages and submerged marine structures.",
+      "sections": [
+        {
+          "title": "Inspection and survey support",
+          "body": "Visual inspections and surveys help document the condition of the submerged structure. The areas, observations and measurements required are agreed before mobilisation.",
+          "list": [
+            "Hull and coating-condition inspections",
+            "Underwater CCTV surveys",
+            "Berth, dock and jetty inspections",
+            "Measurement and survey support"
+          ]
+        },
+        {
+          "title": "Hull, propeller and appendage work",
+          "body": "The method depends on inspection findings, coating compatibility and the conditions at the work location.",
+          "list": [
+            "Underwater hull cleaning",
+            "Propeller inspection, polishing and repair support",
+            "Rudder, shaft and anode work",
+            "Hull, seal and thruster repair support"
+          ]
+        },
+        {
+          "title": "Operational planning",
+          "body": "Diving, lifting and vessel operations need to be coordinated. Weather, access and operating restrictions are reviewed before the work is arranged."
+        },
+        {
+          "title": "Request underwater support",
+          "body": "Send vessel particulars, inspection records, the location and target dates. Include any owner, class or site requirements."
+        }
+      ],
+      "cta": {
+        "label": "Discuss Your Project",
+        "href": "/get-a-quote/"
+      },
+      "cover": "/assets/project/underwater-hull-detail.webp",
+      "cover_alt": "Underwater view of a vessel hull opening and surrounding surface",
+      "detail_eyebrow": "THE WORK SCOPE",
+      "detail_title": "Inspection, cleaning and repair below the waterline.",
+      "detail_intro": ""
+    },
+    {
+      "slug": "ship-supply",
+      "title": "Ship Supply & Rental",
+      "eyebrow": "EQUIPMENT & TECHNICAL STORES",
+      "intro": "Marine equipment, spare parts and vessel stores, alongside equipment rental for project work.",
+      "sections": [
+        {
+          "title": "Technical supply",
+          "body": "Supply enquiries cover day-to-day vessel stores and the technical items needed for maintenance and installation.",
+          "list": [
+            "Deck, engine, cabin and galley stores",
+            "Marine equipment and spare parts",
+            "Electrical and navigation equipment",
+            "Safety equipment, fittings and chemicals"
+          ]
+        },
+        {
+          "title": "Equipment and operator rental",
+          "body": "Tell us the task, capacity, location and rental period, including any need for an operator.",
+          "list": [
+            "Cranes and forklifts",
+            "Compressors and generators",
+            "Project-specific equipment requirements"
+          ]
+        },
+        {
+          "title": "Identify the item",
+          "body": "Include the description, manufacturer, model or part number and quantity. A drawing, photograph or nameplate can help identify the correct component."
+        },
+        {
+          "title": "Arrange delivery",
+          "body": "Add the delivery location, required date and documentation needs. Availability, lead times and any proposed alternatives are confirmed for your order."
+        }
+      ],
+      "cta": {
+        "label": "Discuss Your Project",
+        "href": "/get-a-quote/"
+      },
+      "cover": "/assets/archive/equipment-staging.webp",
+      "cover_alt": "Equipment and materials prepared beside a mobile crane",
+      "detail_eyebrow": "THE WORK SCOPE",
+      "detail_title": "Parts, stores and project equipment.",
+      "detail_intro": ""
+    },
+    {
+      "slug": "marine-services",
+      "title": "Marine Fabrication & Installation",
+      "eyebrow": "STRUCTURES, FOUNDATIONS & MODULES",
+      "intro": "Workshop fabrication and onboard installation for steel structures, equipment foundations and offshore modules.",
+      "sections": [
+        {
+          "title": "Structural fabrication and modifications",
+          "body": "Components are prepared to the project drawings before transfer to the work location for welding, fitting and finishing.",
+          "list": [
+            "Structural steelwork and local reinforcement",
+            "Equipment supports and access structures",
+            "Associated piping and mechanical interfaces"
+          ]
+        },
+        {
+          "title": "Equipment foundations",
+          "body": "Foundations and supports for winches, pumps, generators and other equipment are fabricated and installed to the engineering requirements."
+        },
+        {
+          "title": "Module installation support",
+          "body": "Module installation brings together lifting, structural connections and associated piping or mechanical work. The sequence is planned around access to the installation area."
+        },
+        {
+          "title": "Bring the installation details together",
+          "body": "Send the equipment details, drawings, location and dates. Identify the engineering and inspection responsibilities alongside the fabrication and installation work."
+        }
+      ],
+      "cta": {
+        "label": "Discuss Your Project",
+        "href": "/get-a-quote/"
+      },
+      "cover": "/assets/archive/fabricated-frame.webp",
+      "cover_alt": "A fabricated steel support frame on its base",
+      "detail_eyebrow": "THE WORK SCOPE",
+      "detail_title": "Prepare ashore. Install on board.",
+      "detail_intro": ""
+    },
+    {
+      "slug": "services",
+      "title": "Marine & Offshore Services",
+      "eyebrow": "FIND THE RIGHT SUPPORT",
+      "intro": "Repair, installation, underwater support and technical supply for vessels and offshore assets.",
+      "sections": [
+        {
+          "title": "Maintenance & Repair",
+          "body": "Steel renewal, tank and deck cleaning, surface preparation, coatings and piping repairs."
+        },
+        {
+          "title": "Underwater Marine Services",
+          "body": "Hull and structure inspections, cleaning, propeller work and underwater repair support."
+        },
+        {
+          "title": "Ship Supply & Rental",
+          "body": "Vessel stores, equipment and spare parts, plus cranes, forklifts, compressors and generator rental enquiries."
+        },
+        {
+          "title": "Marine Fabrication & Installation",
+          "body": "Workshop preparation, steel structures, equipment foundations and module installation."
+        }
+      ],
+      "cta": {
+        "label": "Discuss Your Project",
+        "href": "/get-a-quote/"
+      },
+      "cover": "/assets/archive/marine-project-overview.webp",
+      "cover_alt": "A marine structure and transport equipment at a worksite",
+      "detail_eyebrow": "THE WORK SCOPE",
+      "detail_title": "Find the right\nstarting point.",
+      "detail_intro": "Choose a service to explore the activities and discuss the support you need."
+    },
+    {
+      "slug": "rigging-oilfield",
+      "title": "Rigging & Oilfield Support",
+      "eyebrow": "OFFSHORE FIELD SUPPORT",
+      "intro": "Rigging, equipment positioning and steelwork support for marine and oilfield projects, planned around the work area and the installation sequence.",
+      "cover": "/assets/archive/installation-lifting.webp",
+      "cover_alt": "Crane handling a fabricated steel assembly at a marine worksite",
+      "detail_eyebrow": "THE WORK IN THE FIELD",
+      "detail_title": "Prepare. Position. Install.",
+      "detail_intro": "The task starts with the component, the work location and the agreed lifting and installation arrangements.",
+      "sections": [
+        {
+          "title": "Rigging and equipment positioning",
+          "body": "Preparation and handling support for components moving from the workshop or staging area to their installation location.",
+          "list": [
+            "Component handling and positioning",
+            "Rigging support within the agreed lift plan",
+            "Coordination with the appointed lifting team"
+          ]
+        },
+        {
+          "title": "Oilfield and offshore steelwork",
+          "body": "Fabrication, modification and installation support for steel structures, pipe supports and equipment foundations.",
+          "list": [
+            "Workshop preparation to engineering drawings",
+            "Steel and pipe-support installation",
+            "Scaffold access and work-area coordination"
+          ]
+        },
+        {
+          "title": "Define the assignment",
+          "body": "Share the component details, drawings, location and proposed schedule. We will review the personnel, equipment interfaces and work scope with you."
+        }
+      ],
+      "cta": {
+        "label": "Discuss Your Project",
+        "href": "/get-a-quote/"
+      }
+    },
+    {
+      "slug": "shipyard-services",
+      "title": "Shipyard Services",
+      "eyebrow": "YARD PROJECT SUPPORT",
+      "intro": "Trade teams and practical work support for shipyard repair, maintenance and installation projects.",
+      "cover": "/assets/archive/marine-worksite.webp",
+      "cover_alt": "Vessels alongside a marine worksite",
+      "detail_eyebrow": "COORDINATED YARD WORK",
+      "detail_title": "Different trades. One work sequence.",
+      "detail_intro": "Steel, piping, access and coatings often share the same space. Planning the sequence helps the work move from preparation to completion.",
+      "sections": [
+        {
+          "title": "Repair and fabrication support",
+          "body": "Steel renewal, structural modification, pipe fabrication and onboard installation within the agreed repair scope.",
+          "list": [
+            "Workshop and onboard steelwork",
+            "Pipe and support installation",
+            "Component preparation and assembly"
+          ]
+        },
+        {
+          "title": "Surface preparation and access",
+          "body": "Cleaning, blasting, painting and scaffold arrangements coordinated with adjacent work.",
+          "list": [
+            "Tank and deck cleaning",
+            "Surface preparation and protective coatings",
+            "Scaffold erection and modification"
+          ]
+        },
+        {
+          "title": "Personnel and handover",
+          "body": "Team requirements and progress information are coordinated with the shipyard project organisation. Share the work list, access conditions and schedule so we can review the support required."
+        }
+      ],
+      "cta": {
+        "label": "Discuss Your Project",
+        "href": "/get-a-quote/"
+      }
+    },
+    {
+      "slug": "ship-construction",
+      "title": "Ship Construction Support",
+      "eyebrow": "NEWBUILD PROJECTS",
+      "intro": "Fabrication and installation support for ship construction projects, from prepared steel components to work carried out on board.",
+      "cover": "/assets/archive/fabricated-frame.webp",
+      "cover_alt": "A fabricated steel frame prepared in a workshop",
+      "detail_eyebrow": "FROM DRAWING TO INSTALLATION",
+      "detail_title": "Support for the build.",
+      "detail_intro": "The scope is agreed around the shipyard programme, engineering drawings and the interfaces between production teams.",
+      "sections": [
+        {
+          "title": "Steel fabrication and assembly",
+          "body": "Preparation, fit-up, welding and finishing of steel components to the project drawings.",
+          "list": [
+            "Structural components and steel outfitting",
+            "Platforms, supports and foundations",
+            "Workshop prefabrication"
+          ]
+        },
+        {
+          "title": "Piping and onboard installation",
+          "body": "Pipe sections and supports prepared for installation at the specified onboard location.",
+          "list": [
+            "Pipe and support fabrication",
+            "Equipment installation support",
+            "Coordination with adjacent trades"
+          ]
+        },
+        {
+          "title": "Discuss your construction scope",
+          "body": "Share the vessel type, work package, drawings and delivery sequence. We will review the fabrication, installation or personnel support required."
+        }
+      ],
+      "cta": {
+        "label": "Discuss Your Project",
+        "href": "/get-a-quote/"
+      }
+    },
+    {
+      "slug": "sustainability",
+      "title": "Sustainability",
+      "eyebrow": "A PRACTICAL RESPONSIBILITY",
+      "intro": "Thoughtful repair. Prepared teams. Care for the work environment.",
+      "cover": "/assets/archive/vessel-evening.webp",
+      "cover_alt": "An offshore vessel alongside a quay at dusk",
+      "cta": {
+        "label": "Discuss Your Project",
+        "href": "/get-a-quote/"
+      },
+      "sustainability": {
+        "overview": {
+          "eyebrow": "SUSTAINABILITY AT SEAFORT",
+          "title": "Responsibility begins with the way we work.",
+          "body": "Marine repair brings people, materials and equipment together in demanding environments. Our approach focuses on practical choices within each project: understanding the repair, preparing the team and considering the surrounding work area.",
+          "link_label": "Discover our services",
+          "link_href": "/services/"
+        },
+        "pillars": {
+          "eyebrow": "THREE AREAS OF FOCUS",
+          "title": "From the asset to the work site.",
+          "intro": "These priorities connect workshop preparation with the work carried out on board.",
+          "items": [
+            {
+              "eyebrow": "01 / ASSET CARE",
+              "title": "Repair with purpose",
+              "body": "Consider repair and component renewal against the engineering scope, helping owners maintain existing marine assets.",
+              "link_label": "Explore repair support",
+              "image": "/assets/archive/steel-finishing.webp",
+              "image_alt": "Worker grinding a steel component from scaffold access",
+              "link_href": "/maintenance-repair/"
+            },
+            {
+              "eyebrow": "02 / PEOPLE & PREPARATION",
+              "title": "Prepare people for the task",
+              "body": "Bring the required trades, access arrangements and responsibilities into the work plan before activities begin.",
+              "link_label": "Explore our workforce",
+              "image": "/assets/archive/skilled-trades.webp",
+              "image_alt": "Welders working on steel components at a marine worksite",
+              "link_href": "/manpower-team/"
+            },
+            {
+              "eyebrow": "03 / MATERIALS & WORK AREA",
+              "title": "Make resources count",
+              "body": "Plan material needs and consider housekeeping, containment and work residues alongside fabrication and coating activities.",
+              "link_label": "See our field work",
+              "image": "/assets/archive/prepared-gratings.webp",
+              "image_alt": "Prepared steel gratings arranged in a work area",
+              "link_href": "/references/"
+            }
+          ]
+        },
+        "approach": {
+          "eyebrow": "OUR APPROACH",
+          "title": "Build responsibility into the work sequence.",
+          "body": "A clear scope connects preparation, execution and handover. Drawings, site conditions and the interfaces between trades help shape the plan. Environmental and safety arrangements are discussed with the vessel or shipyard organisation as part of that process.",
+          "link_label": "Discuss your project",
+          "image": "/assets/archive/onboard-assembly.webp",
+          "image_alt": "Personnel coordinating assembly work on board a vessel",
+          "link_href": "/get-a-quote/"
+        },
+        "commitments": {
+          "eyebrow": "OUR WORKING PRINCIPLES",
+          "title": "Small decisions shape the whole job.",
+          "intro": "Practical priorities to carry through each agreed work scope.",
+          "items": [
+            {
+              "title": "Prepare before mobilising",
+              "body": "Clarify drawings, access and work interfaces so the team understands the task and its sequence."
+            },
+            {
+              "title": "Plan for materials and residues",
+              "body": "Consider cutting, preparation, reusable items and waste handover within the site arrangements."
+            },
+            {
+              "title": "Keep information clear",
+              "body": "Agree the records and handover information needed for the work. Describe outcomes using project evidence."
+            }
+          ]
+        },
+        "documents": {
+          "eyebrow": "INFORMATION & DOCUMENTS",
+          "title": "Information for your project.",
+          "body": "Ask us about the scope, working arrangements and documentation needed for your project. Available company brochures can be downloaded here.",
+          "link_label": "Download brochure",
+          "secondary_label": "Discuss documentation",
+          "secondary_href": "/get-a-quote/"
+        },
+        "hero_link_label": "Explore our approach",
+        "hero_link_href": "#our-focus",
+        "navigation": [
+          {
+            "label": "Our focus",
+            "href": "#our-focus"
+          },
+          {
+            "label": "Our approach",
+            "href": "#our-approach"
+          },
+          {
+            "label": "Working principles",
+            "href": "#working-principles"
+          },
+          {
+            "label": "Documents",
+            "href": "#documents"
+          }
+        ]
+      }
+    }
+  ]
+}

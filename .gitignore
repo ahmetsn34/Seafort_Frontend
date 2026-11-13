@@ -1,0 +1,13 @@
+.env
+.env.*
+!.env.example
+*.log
+*.lock
+*.tmp
+.DS_Store
+Thumbs.db
+__pycache__/
+/website/seafort/app/config.php
+/website/seafort/storage/
+/website/public_html/uploads/*
+!/website/public_html/uploads/.htaccess

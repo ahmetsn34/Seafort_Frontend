@@ -1,0 +1,32 @@
+<?php
+declare(strict_types=1);
+require dirname(__DIR__,2).'/seafort/app/bootstrap.php';
+require_once dirname(__DIR__,2).'/seafort/app/brochures.php';
+sf_admin_session();if(empty($_SESSION['authenticated'])){header('Location: /admin/',true,303);exit;}
+$pages=sf_brochure_pages();$key=is_string($_GET['page']??null)?$_GET['page']:'general';
+if(!isset($pages[$key])){http_response_code(404);exit('Sayfa bulunamadı.');}
+$base='/admin/brochures.php?page='.rawurlencode($key);$content=sf_content_read('brochures');$revision=sf_content_revision('brochures');$error='';$notice='';
+if(($_SERVER['REQUEST_METHOD']??'')==='POST'){
+    try{
+        sf_require_csrf();$action=$_POST['action']??'';
+        if($action==='logout'){sf_logout();header('Location: /admin/',true,303);exit;}
+        if($action!=='save')throw new InvalidArgumentException('İşlem tanınmadı.');
+        $submitted=is_string($_POST['revision']??null)?$_POST['revision']:'';
+        if(!hash_equals($revision,$submitted))throw new InvalidArgumentException('Başka bir sekmede içerik değişti. Sayfayı yenileyin.');
+        $label=is_string($_POST['label']??null)?trim($_POST['label']):'';
+        if($label==='' || sf_strlen($label)>80)throw new InvalidArgumentException('Düğme metni 1–80 karakter olmalıdır.');
+        $content[$key]['label']=$label;
+        if(isset($_POST['remove_pdf']))$content[$key]['brochure_file']='';
+        if(isset($_FILES['pdf']) && ($_FILES['pdf']['error']??UPLOAD_ERR_NO_FILE)!==UPLOAD_ERR_NO_FILE){$content[$key]['brochure_file']=sf_store_brochure_upload($_FILES['pdf']);}
+        sf_save_content('brochures',$content,$submitted);
+        $_SESSION['brochure_notice']='Broşür ayarları kaydedildi.';header('Location: '.$base,true,303);exit;
+    }catch(InvalidArgumentException $e){$error=$e->getMessage();}catch(Throwable $e){error_log('Seafort brochure: '.$e->getMessage());$error='Broşür kaydedilemedi. Mevcut ayarlar korunuyor.';}
+}
+if(isset($_SESSION['brochure_notice'])){$notice=$_SESSION['brochure_notice'];unset($_SESSION['brochure_notice']);}
+$item=$content[$key];$hasPdf=$item['brochure_file']!=='';
+?><!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Broşürler | Seafort</title><meta name="robots" content="noindex,nofollow"><link rel="stylesheet" href="<?=sf_escape(sf_asset_url('/admin/admin.css'))?>"><link rel="stylesheet" href="<?=sf_escape(sf_asset_url('/admin/content.css'))?>"><link rel="stylesheet" href="<?=sf_escape(sf_asset_url('/assets/fonts/brand-fonts.css'))?>"><link rel="stylesheet" href="<?=sf_escape(sf_asset_url('/admin/clarity.css'))?>"><link rel="stylesheet" href="<?=sf_escape(sf_asset_url('/admin/brochures.css'))?>"></head><body class="admin-shell">
+<a class="skip-link" href="#content">İçeriğe geç</a><aside class="sidebar"><a class="sidebar-brand" href="/admin/"><img src="/assets/logo-white.png" alt="Seafort Service"></a><p class="sidebar-label">İÇERİK YÖNETİMİ</p><nav aria-label="Yönetim menüsü"><a class="side-link" href="/admin/">Blog yazıları</a><a class="side-link" href="/admin/manage.php?type=projects">Projeler</a><a class="side-link" href="/admin/manage.php?type=slides">Ana sayfa sliderı</a><a class="side-link" href="/admin/content.php?type=home">Ana sayfa</a><a class="side-link" href="/admin/content.php?type=pages">Sayfa içerikleri</a><a class="side-link active" href="/admin/brochures.php">Broşürler / PDF</a><a class="side-link" href="/admin/content.php?type=settings">İletişim ve WhatsApp</a></nav><div class="sidebar-bottom"><form method="post"><input type="hidden" name="csrf" value="<?=sf_escape(sf_csrf())?>"><input type="hidden" name="action" value="logout"><button class="logout">Oturumu kapat</button></form></div></aside>
+<div class="admin-main"><header class="topbar"><p>SEAFORT / Broşür yönetimi</p><a href="/" target="_blank" rel="noopener">Siteyi görüntüle</a></header><main class="workspace" id="content"><div class="page-heading"><div><p class="eyebrow">İNDİRİLEBİLİR DOSYALAR</p><h1>Broşürler</h1><p class="muted">Bir genel PDF kullanın veya her sayfa için ayrı broşür yükleyin.</p></div></div>
+<?php if($notice):?><div class="alert alert-success" role="status"><?=sf_escape($notice)?></div><?php endif;?><?php if($error):?><div class="alert alert-error" role="alert"><?=sf_escape($error)?></div><?php endif;?>
+<section class="panel brochure-selector"><form method="get"><label for="page">1. Düzenlenecek sayfayı seçin</label><div class="brochure-select-row"><select name="page" id="page"><?php foreach($pages as $id=>$page):?><option value="<?=sf_escape($id)?>" <?=$id===$key?'selected':''?>><?=sf_escape($page['title'])?></option><?php endforeach;?></select><button class="button button-ghost">Sayfayı aç</button></div></form><p class="field-help">Sayfaya özel PDF yoksa genel şirket broşürü kullanılır. Hiç PDF yüklenmediyse indirme düğmesi pasif kalır.</p></section>
+<form class="site-content-form" method="post" enctype="multipart/form-data" action="<?=sf_escape($base)?>"><input type="hidden" name="csrf" value="<?=sf_escape(sf_csrf())?>"><input type="hidden" name="revision" value="<?=sf_escape($revision)?>"><input type="hidden" name="action" value="save"><section class="panel brochure-editor"><h2>2. <?=sf_escape($pages[$key]['title'])?></h2><div class="content-field"><label for="label">Sitedeki indirme düğmesinin metni</label><input name="label" id="label" maxlength="80" required value="<?=sf_escape($item['label'])?>"><p class="field-help">Örnek: Download brochure. Sitenin ana dili İngilizcedir.</p></div><div class="content-field"><label for="pdf">PDF broşür yükle</label><input type="file" id="pdf" name="pdf" accept="application/pdf,.pdf"><p class="field-help">Yalnızca PDF, en fazla 10 MB. Yeni dosya yüklediğinizde mevcut bağlantı güncellenir.</p></div><?php if($hasPdf):?><div class="brochure-current"><strong>Bu sayfaya özel PDF hazır.</strong><a class="button button-ghost" href="/brochure/?page=<?=rawurlencode($key)?>">Mevcut PDF’yi indir</a><label class="checkbox-label"><input type="checkbox" name="remove_pdf" value="1">Bu sayfanın PDF bağlantısını kaldır</label></div><?php else:?><div class="setup-note">Bu sayfaya özel PDF yüklenmedi. Genel broşür varsa otomatik kullanılır.</div><?php endif;?></section><div class="content-save-bar"><p>PDF ve düğme metnini güncellemek için kaydedin.</p><button class="button" type="submit">Broşürü kaydet</button></div></form></main></div></body></html>

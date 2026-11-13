@@ -1,57 +1,35 @@
-# Seafort Frontend
+# Seafort Website
 
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)
-![CSS](https://img.shields.io/badge/CSS-1572B6?style=flat-square&logo=css&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
-[![Static site checks](https://github.com/ahmetsn34/Seafort_Frontend/actions/workflows/check.yml/badge.svg?branch=main)](https://github.com/ahmetsn34/Seafort_Frontend/actions/workflows/check.yml)
+Seafort’un güncel bağımsız PHP web sitesi ve içerik yönetim paneli. **Sürüm 1.3.1** projesi [website](website/) klasöründedir.
 
-A responsive, multi-page frontend for a maritime services company, built with HTML, CSS, and vanilla JavaScript. The site presents offshore repair, ship construction, supply services, facilities, and company information.
+![Sustainability tasarım önizlemesi](docs/images/sustainability-preview.jpg)
 
-![Desktop preview of the static Seafort home page](docs/images/preview-desktop.jpg)
+## Güncel proje
 
-## What is included
+- PHP 8.2+, veritabanı ve npm gerektirmeyen yapı.
+- Blog, projeler, slider, sayfa metinleri ve görseller için yönetim paneli.
+- Sayfaya özel veya genel PDF broşürü; adminden değiştirilebilir WhatsApp ve sosyal hesaplar.
+- İngilizce ana dil; Türkçe, Arapça, Rusça ve sadeleştirilmiş Çince seçenekleri.
+- Sustainability, FPU çelik işleri, rigging/oilfield, tersane ve gemi inşa desteği sayfaları.
+- Yerel görseller, Poppins/Montserrat fontları ve İngilizce tanıtım videosu.
 
-- Ten static pages covering the home page, services, values, team, Filyos facilities, references, blog, and contact / careers.
-- Desktop dropdown navigation and a mobile menu with ARIA state updates and Escape-key handling.
-- Animated counters, a client-logo strip, and a scroll-to-top button.
-- Quote and careers form layouts.
+**[Çalıştırma ve kurulum kılavuzu](website/README.md)** · [Yayındaki önizleme](https://preview.seafortservice.com/sustainability/)
 
-## Local preview
+## Yerelde çalıştırma
 
-No package installation or build step is required. With Python 3 installed, run:
+Repo kökünde:
 
-```bash
-git clone https://github.com/ahmetsn34/Seafort_Frontend.git
-cd Seafort_Frontend
-python -m http.server 8000 --bind 127.0.0.1
+```sh
+php website/tools/setup.php
+php -S 127.0.0.1:8082 -t website/public_html website/tools/router.php
 ```
 
-Open [http://127.0.0.1:8000](http://127.0.0.1:8000). On systems where Python 3 is named `python3`, use that command instead.
+Tarayıcıda <http://127.0.0.1:8082> adresini açın. Windows/XAMPP komutları kurulum kılavuzundadır.
 
-## Current scope
+Yönetici şifreleri, canlı ayarlar, özel çalışan kayıtları, taslak yazılar ve yüklenen dosyalar repoda bulunmaz. Kurulum yalnızca yayımlanmış başlangıç içeriğini kopyalar; mevcut içerikleri değiştirmez.
 
-The quote and careers forms are interface demos: JavaScript prevents submission and displays a status message. There is no email delivery, CV upload service, database, or backend in this repository. The forms use `novalidate`; production use needs validation and a submission endpoint.
+## Önceki statik site
 
-Blog article and pagination links currently use `#` placeholders. Database-related HTML comments describe possible future integration rather than a working data layer.
+Kök dizindeki HTML/CSS/JavaScript dosyaları ve mevcut GitHub Pages yayını korunmuştur. PHP uygulaması GitHub Pages üzerinde çalışmaz; `website/public_html` kökünü kullanan PHP destekli bir sunucu gerekir.
 
-Most logos and photos load from `seafortservice.com`; fonts load from Google Fonts. Their appearance depends on network access and those external services. The optional `assets/img/hero.jpg` is not bundled; the home hero uses its dark background fallback until an image is supplied. See [image guidance](assets/img/README.txt).
-
-## Project structure
-
-```text
-index.html                  Home page
-*.html                      Service and company pages
-assets/css/style.css        Shared styles and responsive layout
-assets/js/main.js           Navigation, animations, and demo forms
-assets/img/README.txt        Local image guidance
-scripts/check_site.py       Local link and asset checks
-.github/workflows/check.yml  Automated static checks
-```
-
-## Checks
-
-```bash
-python scripts/check_site.py
-```
-
-The dependency-free check validates local HTML links, fragment targets, and referenced HTML / CSS assets with case-sensitive paths. It reports the optional missing hero image and `#` placeholders separately. External URLs are not requested; browser behavior and remote image availability need a browser review. GitHub Actions runs this check on pushes and pull requests.
+[Önceki sürümün açıklaması ve kontrolleri](docs/legacy-static-site.md).
