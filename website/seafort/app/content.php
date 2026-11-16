@@ -5,7 +5,7 @@ declare(strict_types=1);
 function sf_content_defaults(string $type): array
 {
     if ($type === 'settings') {
-        return ['company' => 'Seafort Denizcilik A.Ş.', 'email' => 'contact@seafortservice.com', 'footer_tagline' => 'Marine and offshore repair and project support.', 'whatsapp' => ['number'=>'','label'=>'WhatsApp support','message'=>'Hello Seafort, I would like to discuss a project.'], 'social' => [
+        return ['company' => 'Seafort Denizcilik A.Ş.', 'email' => 'contact@seafortservice.com', 'footer_tagline' => 'Marine and offshore repair and project support.', 'archive' => ['folder_url'=>'','note'=>''], 'whatsapp' => ['number'=>'','label'=>'WhatsApp support','message'=>'Hello Seafort, I would like to discuss a project.'], 'social' => [
             'linkedin_url' => 'https://www.linkedin.com/company/seafort-service/',
             'instagram_url' => 'https://www.instagram.com/seafortservice/',
             'youtube_url' => 'https://www.youtube.com/@SeafortService',
@@ -96,7 +96,13 @@ function sf_content_validate_tree(array $defaults, array $input, string $prefix 
         if (sf_strlen($value) > 12000) throw new InvalidArgumentException('Bir metin alanı en fazla 12.000 karakter olabilir.');
         if ($key === 'slug' && $value !== $default) throw new InvalidArgumentException('Mevcut sayfaların adresi bu ekrandan değiştirilemez.');
         if ($key === 'email' && (!filter_var($value, FILTER_VALIDATE_EMAIL) || strlen($value) > 180)) throw new InvalidArgumentException('Geçerli bir iletişim e-posta adresi yazın.');
-        if ($path === 'whatsapp.number') {
+        if ($path === 'archive.folder_url') {
+            if ($value!=='') {
+                $parts=parse_url($value);
+                if (!filter_var($value,FILTER_VALIDATE_URL) || ($parts['scheme']??'')!=='https' || !in_array(strtolower($parts['host']??''),['cavitechdenizcilik.sharepoint.com','cavitechdenizcilik-my.sharepoint.com'],true) || isset($parts['user']) || isset($parts['pass']) || isset($parts['port'])) throw new InvalidArgumentException('Kurumsal SharePoint / OneDrive klasörünün HTTPS bağlantısını girin.');
+            }
+        }
+        elseif ($path === 'whatsapp.number') {
             $value = preg_replace('/[\s()+-]/', '', $value);
             if ($value !== '' && !preg_match('/\A[1-9][0-9]{7,14}\z/D', $value)) throw new InvalidArgumentException('WhatsApp numarasını ülke koduyla yazın. Örnek biçim: 90 ile başlayan numara; boş bırakırsanız düğme gizlenir.');
         }
@@ -107,6 +113,16 @@ function sf_content_validate_tree(array $defaults, array $input, string $prefix 
         elseif (is_string($key) && preg_match('/(?:^|_)(poster|image|cover|photo)$/D', $key)) $value = sf_cover_path($value);
         if (in_array($key, ['title', 'company', 'email'], true) && $value === '') throw new InvalidArgumentException('Başlık ve iletişim alanları boş bırakılamaz.');
         $result[$key] = $value;
+    }
+    if (isset($result['stats_review'])) {
+        $review=$result['stats_review'];
+        if (!in_array($review['status'], ['pending','approved'], true)) throw new InvalidArgumentException('Rakamlar için geçerli bir teyit durumu seçin.');
+        if ($review['status']==='approved') {
+            $date=$review['checked_at'];
+            if ($review['source']==='' || !preg_match('/\A(\d{4})-(\d{2})-(\d{2})\z/D',$date,$dateParts) || !checkdate((int)$dateParts[2],(int)$dateParts[3],(int)$dateParts[1])) {
+                throw new InvalidArgumentException('Rakamları yayımlamak için teyit kaynağını ve geçerli teyit tarihini girin.');
+            }
+        }
     }
     return $result;
 }

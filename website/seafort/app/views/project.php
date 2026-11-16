@@ -1,2 +1,9 @@
-<?php $cover=sf_cover_url($project['cover'] ?? '');site_header($project['title'],$route,$project['summary']); ?>
-<main id="main"><section class="project-detail-hero"><div class="wrap"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/projects/">Projects</a><span aria-hidden="true">/</span><span><?=h($project['title'])?></span></nav><p class="eyebrow eyebrow-light"><?=h($project['category'] ?: 'PROJECT')?></p><h1><?=h($project['title'])?></h1><p><?=h($project['summary'])?></p><dl class="project-facts"><?php if(!empty($project['location'])): ?><div><dt>LOCATION</dt><dd><?=h($project['location'])?></dd></div><?php endif; ?><?php if(!empty($project['year'])): ?><div><dt>YEAR</dt><dd><?=h($project['year'])?></dd></div><?php endif; ?></dl></div></section><?php if($cover): ?><figure class="project-main-cover wrap"><img src="<?=h($cover)?>" alt="<?=h($project['cover_alt'])?>" width="1680" height="1077"></figure><?php endif; ?><section class="section project-detail-body"><div class="wrap project-body-grid"><aside><p class="eyebrow">THE PROJECT</p><h2>Understanding<br> the scope.</h2><a class="text-link" href="/projects/">All Projects</a></aside><article class="prose"><?=sf_paragraphs($project['body'])?></article></div></section><?php site_cta(); ?></main><?php site_footer(); ?>
+<?php
+$casePreview = false;
+site_header((string) $project['title'], $route, (string) ($project['summary'] ?? ''));
+?>
+<main id="main">
+<?php require __DIR__.'/project-case.php'; ?>
+<?php site_cta(); ?>
+</main>
+<?php site_footer(); ?>

@@ -7,6 +7,10 @@ define('SF_PUBLIC_DIR', dirname(SF_ROOT) . '/public_html');
 require_once __DIR__ . '/cms.php';
 require_once __DIR__ . '/content.php';
 require_once __DIR__ . '/brochures.php';
+require_once __DIR__ . '/enquiries.php';
+require_once __DIR__ . '/documents.php';
+require_once __DIR__ . '/translations.php';
+require_once __DIR__ . '/references.php';
 
 /** Version static files by content so an update cannot reuse an older cached design. */
 function sf_asset_url(string $path): string

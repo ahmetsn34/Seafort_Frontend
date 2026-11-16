@@ -1,35 +1,32 @@
 # Seafort Website
 
-Seafort’un güncel bağımsız PHP web sitesi ve içerik yönetim paneli. **Sürüm 1.3.1** projesi [website](website/) klasöründedir.
+Seafort’un bağımsız PHP web sitesi ve içerik yönetimi. **1.4.0-preview** sürümü [website](website/) klasöründedir; bu sürüm yerel inceleme için hazırlanmıştır.
 
-![Sustainability tasarım önizlemesi](docs/images/sustainability-preview.jpg)
-
-## Güncel proje
-
-- PHP 8.2+, veritabanı ve npm gerektirmeyen yapı.
-- Blog, projeler, slider, sayfa metinleri ve görseller için yönetim paneli.
-- Sayfaya özel veya genel PDF broşürü; adminden değiştirilebilir WhatsApp ve sosyal hesaplar.
+- Ayrı teklif ve kariyer formları, özel dosya ekleri ve yönetici gelen kutusu.
+- Yapılandırılabilir SMTP; varsayılan önizleme modunda e-posta gönderilmez.
+- Proje vakaları, açıklamalı fotoğraflar ve yöneticiye özel taslak önizlemesi.
+- Broşür/rapor/sertifika merkezi, referanslar ve çeviri yönetimi.
+- Blog, slider, sayfa içerikleri, WhatsApp ve sosyal medya ayarları.
 - İngilizce ana dil; Türkçe, Arapça, Rusça ve sadeleştirilmiş Çince seçenekleri.
-- Sustainability, FPU çelik işleri, rigging/oilfield, tersane ve gemi inşa desteği sayfaları.
-- Yerel görseller, Poppins/Montserrat fontları ve İngilizce tanıtım videosu.
 
-**[Çalıştırma ve kurulum kılavuzu](website/README.md)** · [Yayındaki önizleme](https://preview.seafortservice.com/sustainability/)
+## Yerelde açma
 
-## Yerelde çalıştırma
+Windows’ta **`website/START-PREVIEW.cmd`** dosyasını çalıştırın. Başlatıcı PHP’yi önce PATH’te, ardından `C:\xampp\php\php.exe` konumunda arar. Adres: <http://127.0.0.1:8123>.
 
-Repo kökünde:
+Diğer sistemlerde, repo kökünden:
 
 ```sh
 php website/tools/setup.php
-php -S 127.0.0.1:8082 -t website/public_html website/tools/router.php
+php website/tools/migrate-forms.php
+php -S 127.0.0.1:8123 -t website/public_html website/tools/router.php
 ```
 
-Tarayıcıda <http://127.0.0.1:8082> adresini açın. Windows/XAMPP komutları kurulum kılavuzundadır.
+[Kurulum, admin ve yayın notları](website/README.md)
 
-Yönetici şifreleri, canlı ayarlar, özel çalışan kayıtları, taslak yazılar ve yüklenen dosyalar repoda bulunmaz. Kurulum yalnızca yayımlanmış başlangıç içeriğini kopyalar; mevcut içerikleri değiştirmez.
+Başlatıcı mevcut içerikleri veya yönetici hesabını sıfırlamaz. Kaynak, boş şirket verilerini uydurarak doldurmaz; Osmangazi örneği yayımlanmamış bir hazırlık taslağıdır. Gerçek dış e-posta teslimi henüz doğrulanmış değildir.
 
 ## Önceki statik site
 
-Kök dizindeki HTML/CSS/JavaScript dosyaları ve mevcut GitHub Pages yayını korunmuştur. PHP uygulaması GitHub Pages üzerinde çalışmaz; `website/public_html` kökünü kullanan PHP destekli bir sunucu gerekir.
+Kökteki HTML/CSS/JavaScript dosyaları ve mevcut GitHub Pages yayını korunmuştur. PHP projesi GitHub Pages üzerinde çalışmaz. Bu önizleme, Hostinger veya ana alan adına otomatik dağıtım yapmaz.
 
-[Önceki sürümün açıklaması ve kontrolleri](docs/legacy-static-site.md).
+[Önceki statik sürüm](docs/legacy-static-site.md)

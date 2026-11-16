@@ -131,7 +131,12 @@
           "value": "20+",
           "label": "Years of marine experience"
         }
-      ]
+      ],
+      "stats_review": {
+        "status": "pending",
+        "source": "",
+        "checked_at": ""
+      }
     },
     {
       "slug": "marmaris",
@@ -255,7 +260,7 @@
         },
         {
           "title": "Recruitment contact",
-          "body": "Find Human Resources in our team directory for recruitment enquiries. For a general question, use the contact address shown on this page."
+          "body": "Use the application form on this page for recruitment enquiries. For project or service requests, use our separate project enquiry page."
         }
       ],
       "cta": {
@@ -290,7 +295,7 @@
         },
         {
           "title": "Operations contact",
-          "body": "Send your enquiry to the contact address shown on this page, or find the appropriate department in our team directory."
+          "body": "Use the project enquiry form on this page to discuss your requirements. Job applications have a separate Careers & Crewing page."
         }
       ],
       "cta": {

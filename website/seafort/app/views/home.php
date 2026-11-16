@@ -38,7 +38,7 @@
   <ol class="process-grid"><?php foreach($c['process']['items'] as $i=>$item): ?><li><span class="step"><?=sprintf('%02d',$i+1)?></span><h3><?=h($item['title'])?></h3><p><?=h($item['body'])?></p></li><?php endforeach; ?></ol>
   <div class="values-strip"><div class="values-icon"><svg viewBox="0 0 40 44" aria-hidden="true"><path d="m20 3 15 6v12c0 10-15 19-15 19S5 31 5 21V9Z"/><path d="m13 21 5 5 10-11"/></svg></div><div><p class="eyebrow"><?=h($c['values']['eyebrow'])?></p><h3><?=h($c['values']['title'])?></h3><p><?=h($c['values']['body'])?></p></div><a class="text-link" href="<?=h($c['values']['link_href'])?>"><?=h($c['values']['label'])?></a></div>
 </div></section>
-<?php site_blog_strip(); ?>
+<?php sf_reference_logos_render(); sf_reference_quotes_render(); site_blog_strip(); ?>
 <section class="careers" aria-labelledby="careers-heading"><div class="wrap careers-inner"><div><p class="eyebrow"><?=h($c['careers']['eyebrow'])?></p><h2 id="careers-heading"><?=h($c['careers']['title'])?></h2><p><?=h($c['careers']['body'])?></p></div><a class="text-link" href="<?=h($c['careers']['link_href'])?>"><?=h($c['careers']['label'])?></a></div></section>
 <section class="quote-section" aria-labelledby="quote-heading"><div class="wrap quote-inner"><div><p class="eyebrow eyebrow-light"><?=h($c['quote']['eyebrow'])?></p><h2 id="quote-heading"><?=site_lines($c['quote']['title'])?></h2><p><?=h($c['quote']['body'])?></p></div><div class="quote-actions"><a class="button" href="<?=h($c['quote']['link_href'])?>"><?=h($c['quote']['label'])?></a><a class="email-link" href="mailto:<?=h($siteConfig['email'])?>"><?=h($siteConfig['email'])?></a></div></div></section>
 </main>

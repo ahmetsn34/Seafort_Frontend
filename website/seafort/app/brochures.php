@@ -60,6 +60,7 @@ function site_brochure(string $route): void
     $key=null;foreach(sf_brochure_pages() as $candidate=>$page){if($page['route']===$route){$key=$candidate;break;}}
     if($key===null)return;
     $entry=sf_brochure_entry($key);
+    if(!$entry)return;
     $icon='<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2v10m-4-4 4 4 4-4M3 13v4h14v-4"/></svg>';
     echo '<div class="brochure-rail wrap">';
     if($entry){echo '<a class="brochure-button" href="/brochure/?page='.rawurlencode($key).'" aria-label="'.sf_escape($entry['label']).' (PDF)">'.$icon.'<span>'.sf_escape($entry['label']).'</span><small>PDF</small></a>';}

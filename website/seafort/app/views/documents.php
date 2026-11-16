@@ -1,0 +1,8 @@
+<?php
+$documentSettings=sf_documents_settings();
+$category=is_string($_GET['category']??null)&&array_key_exists($_GET['category'],sf_document_categories())?$_GET['category']:'';
+site_header($documentSettings['title'],'/documents/',$documentSettings['intro']);
+?>
+<main id="main"><section class="documents-hero"><div class="wrap"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span>Documents</span></nav><div class="documents-hero-content"><div><p class="eyebrow eyebrow-light">SEAFORT / DOCUMENTATION</p><h1><?=h($documentSettings['title'])?></h1><p><?=h($documentSettings['intro'])?></p></div><svg viewBox="0 0 110 120" class="documents-hero-icon" aria-hidden="true"><path d="M29 9h39l22 24v72H29ZM67 9v26h23M41 52h35M41 66h35M41 80h22M17 23v92h60"/></svg></div></div></section>
+<section class="section documents-section"><div class="wrap"><form class="documents-filters" method="get" action="/documents/"><div><label for="document-category">Document type</label><select id="document-category" name="category"><option value="">All documents</option><?php foreach(sf_document_categories() as $key=>$label):?><option value="<?=h($key)?>" <?=$category===$key?'selected':''?>><?=h($label)?></option><?php endforeach;?></select></div><div><label for="document-language">Language</label><select id="document-language" name="language"><option value="">All languages</option><?php foreach(sf_document_languages() as $key=>$label):?><option value="<?=h($key)?>" <?=($_GET['language']??'')===$key?'selected':''?>><?=h($label)?></option><?php endforeach;?></select></div><button class="button" type="submit">Apply filters</button></form><?php sf_documents_render($category);?></div></section></main>
+<?php site_footer(); ?>

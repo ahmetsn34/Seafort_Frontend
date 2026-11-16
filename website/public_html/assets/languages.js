@@ -23,7 +23,7 @@
     'zh-CN': {'Language':'语言','Play slideshow':'播放幻灯片','Pause slideshow':'暂停幻灯片','Play':'播放','Pause':'暂停','Open menu':'打开菜单','Close menu':'关闭菜单'}
   };
   const normalize = value => value.replace(/\s+/g, ' ').trim();
-  fetch('/assets/locales/' + language + '.json?v=20261105c', {credentials:'same-origin'})
+  fetch('/translations/?lang=' + encodeURIComponent(language), {credentials:'same-origin'})
     .then(response => { if (!response.ok) throw new Error('Language unavailable'); return response.json(); })
     .then(catalog => {
       Object.assign(catalog, ui[language]);
@@ -79,7 +79,7 @@
         anchor.setAttribute('href', url.pathname + url.search + url.hash);
       }
       for (const form of document.querySelectorAll('form')) {
-        if ((form.getAttribute('method') || 'get').toLowerCase() !== 'get') continue;
+        if ((form.getAttribute('method') || 'get').toLowerCase() !== 'get') { const action = new URL(form.action, location.href); action.searchParams.set('lang', language); form.action = action.pathname + action.search + action.hash; continue; }
         const input = document.createElement('input');
         input.type = 'hidden'; input.name = 'lang'; input.value = language; form.append(input);
       }

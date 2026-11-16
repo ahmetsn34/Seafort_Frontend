@@ -177,7 +177,7 @@ $statusLabels = ['published' => 'Yayında', 'draft' => 'Taslak', 'archived' => '
     <aside class="sidebar">
         <a class="sidebar-brand" href="/admin/"><img src="/assets/logo-white.png" alt="Seafort Service" width="440" height="109"></a>
         <p class="sidebar-label">İÇERİK YÖNETİMİ</p>
-        <nav aria-label="Yönetim menüsü"><a class="side-link" href="/admin/brochures.php">Broşürler / PDF</a>
+        <nav aria-label="Yönetim menüsü"><a class="side-link" href="/admin/enquiries.php">Formlar ve başvurular</a><a class="side-link" href="/admin/brochures.php">Broşürler / PDF</a>
             <a class="side-link <?= !$post ? 'active' : '' ?>" href="/admin/"> Blog yazıları</a>
             <a class="side-link <?= $isNew ? 'active' : '' ?>" href="/admin/?new=1"> Yeni yazı</a>
             <a class="side-link" href="/admin/manage.php?type=projects"> Projeler</a>
@@ -188,7 +188,7 @@ $statusLabels = ['published' => 'Yayında', 'draft' => 'Taslak', 'archived' => '
             <a class="side-link" href="/admin/content.php?type=settings">İletişim ve WhatsApp</a>
             <a class="side-link" href="/blog/" target="_blank" rel="noopener"> Blogu görüntüle</a>
             <a class="side-link" href="/" target="_blank" rel="noopener"> Siteyi görüntüle</a>
-        </nav>
+        <a class="side-link" href="/admin/documents.php">Belge merkezi</a><a class="side-link" href="/admin/references.php">Referanslar ve firmalar</a><a class="side-link" href="/admin/translations.php">Çeviriler</a></nav>
         <div class="sidebar-bottom">
             <div class="user"><span class="user-avatar" aria-hidden="true"><?= sf_escape(strtoupper(substr((string) $_SESSION['username'], 0, 1))) ?></span><div><strong><?= sf_escape($_SESSION['username']) ?></strong><span>Yönetici</span></div></div>
             <form method="post"><input type="hidden" name="csrf" value="<?= sf_escape(sf_csrf()) ?>"><input type="hidden" name="action" value="logout"><button class="logout" type="submit">Oturumu kapat </button></form>
@@ -243,7 +243,7 @@ $statusLabels = ['published' => 'Yayında', 'draft' => 'Taslak', 'archived' => '
                 </tbody></table></div>
                 <?php if ($visible === 0): ?><div class="empty-state"><h3><?= $search !== '' ? 'Eşleşen yazı bulunamadı.' : 'Burada henüz yazı yok.' ?></h3><p><?= $search !== '' ? 'Başka bir başlık arayın veya filtreyi değiştirin.' : ($filter === 'archived' ? 'Arşive taşıdığınız yazılar burada görünür.' : 'Yeni bir yazı oluşturarak başlayabilirsiniz.') ?></p><?php if ($search === '' && $filter !== 'archived'): ?><a class="button button-ghost" href="/admin/?new=1">Yeni yazı oluştur</a><?php endif ?></div><?php endif ?>
             </section>
-            <div class="content-note"><p>Bu bölüm blog yazılarını yönetir. Projeler, ekip ve ana sayfa slider içeriklerine soldaki menüden ulaşabilirsiniz. Arşive alınan kayıtlar kalıcı olarak silinmez.</p></div>
+            <div class="content-note"><p>Bu bölüm blog yazılarını yönetir. Projeler ve ana sayfa slider içeriklerine soldaki menüden ulaşabilirsiniz. Arşive alınan kayıtlar kalıcı olarak silinmez.</p></div>
         <?php endif ?>
         </main>
         <footer class="admin-footer">SEAFORT <span>İçerik yönetimi</span><a href="/" target="_blank" rel="noopener">seafortservice.com</a></footer>

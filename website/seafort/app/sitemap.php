@@ -2,7 +2,8 @@
 declare(strict_types=1);
 header('Content-Type: application/xml; charset=utf-8');
 header('X-Content-Type-Options: nosniff');
-$routes = ['/', '/blog/', '/projects/'];
+$routes = ['/', '/blog/', '/projects/', '/documents/'];
+if(sf_reference_custom_page('ege-deniz'))$routes[]='/ege-deniz/';
 foreach ($siteData['pages'] as $page) $routes[] = '/' . trim($page['slug'], '/') . '/';
 foreach (sf_posts(true) as $post) $routes[] = '/blog/' . $post['slug'] . '/';
 foreach (sf_collection('projects', true) as $project) $routes[] = '/projects/' . $project['slug'] . '/';

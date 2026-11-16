@@ -7,6 +7,7 @@
 .DS_Store
 Thumbs.db
 __pycache__/
+/case-qa-*/
 /website/seafort/app/config.php
 /website/seafort/storage/
 /website/public_html/uploads/*

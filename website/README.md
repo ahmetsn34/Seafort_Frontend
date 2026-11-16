@@ -1,68 +1,67 @@
-# Seafort 1.3.1 — kurulum ve geliştirme
+# Seafort 1.4.0-preview
 
-Gereksinimler: **PHP 8.2+**, `fileinfo`, `json` ve `session` desteği. Veritabanı, Composer veya npm kurulumu gerekmez.
+PHP 8.2+ ve `fileinfo`, `json`, `session`, `openssl` eklentileri gerekir. Veritabanı, npm veya ayrı build adımı yoktur. SMTP kütüphanesi paketle birlikte gelir.
 
-## Hızlı başlangıç
+## Çalıştırma
 
-Repo kökünden çalıştırın:
+Windows’ta **START-PREVIEW.cmd** dosyasını çift tıklayın. PHP önce PATH’te, sonra `C:\xampp\php\php.exe` konumunda aranır. Terminal açık kaldığı sürece site <http://127.0.0.1:8123> adresindedir; durdurmak için **Ctrl+C** kullanın.
+
+PowerShell’den başka port veya yalnızca kurulum kontrolü:
+
+```powershell
+& .\website\tools\start-preview.ps1 -Port 8125
+& .\website\tools\start-preview.ps1 -CheckOnly
+```
+
+Manuel komutlar, repo kökünden:
 
 ```sh
 php website/tools/setup.php
-php -S 127.0.0.1:8082 -t website/public_html website/tools/router.php
+php website/tools/migrate-forms.php
+php -S 127.0.0.1:8123 -t website/public_html website/tools/router.php
 ```
 
-Adres: <http://127.0.0.1:8082>. PHP dosyaları anlık okunur; HTML, CSS ve JavaScript değişikliklerinden sonra sayfayı yenileyin. Ayrı bir build adımı yoktur.
+PATH’te PHP yoksa komutlarda `php` yerine PowerShell’de `& 'C:\xampp\php\php.exe'` kullanın. Kod/CSS değişiklikleri için sayfayı yenilemeniz yeterlidir. Başlatıcı yalnızca kendi işlemi için PowerShell yürütme seçeneği kullanır; bilgisayarın genel güvenlik politikasını değiştirmez.
 
-Windows’ta PHP komutu tanınmıyorsa XAMPP yolu ile:
+`setup.php` eksik ayar ve başlangıç dosyalarını oluşturur; mevcut dosyaları korur. `migrate-forms.php` kaldırılan ekip rehberine ait iki eski cümleyi günceller ve eksik başlangıç proje taslağını yalnızca aynı kayıt yoksa ekler. Yönetici hesabı oluşturulmaz, parola sıfırlanmaz. Mevcut projelerin üzerine yeni seed içeriği yazılmaz.
 
-```powershell
-& 'C:\xampp\php\php.exe' website/tools/setup.php
-& 'C:\xampp\php\php.exe' -S 127.0.0.1:8082 -t website/public_html website/tools/router.php
-```
+## Yönetim paneli
 
-`setup.php`, `config.example.php` üzerinden yerel ayar dosyasını ve `seed` klasöründeki yayımlanmış içeriklerden başlangıç verilerini oluşturur. Yeniden çalıştırıldığında mevcut dosyaları korur.
-
-## Yönetici hesabı
+Giriş: <http://127.0.0.1:8123/admin/>. İlk kurulumda hesap oluşturmak için:
 
 ```sh
 php website/seafort/bin/create-admin.php --username seafort-editor
 ```
 
-Şifrenizi terminal sorunca kendiniz belirleyin. Hazır hesap veya parola yoktur. Giriş: <http://127.0.0.1:8082/admin/>. Windows’ta aynı komutu yukarıdaki XAMPP PHP yolu ile çalıştırabilirsiniz.
+Parolayı terminal istediğinde belirleyin; hazır hesap/parola yoktur. Mevcut hesabınız varsa bu adımı atlayın.
 
-- **Sayfa içerikleri:** Sustainability dahil mevcut sayfaların metin ve görselleri.
-- **Broşürler / PDF:** Genel veya sayfaya özel, en fazla 10 MB PDF. PDF yokken indirme düğmesi pasiftir.
-- **İletişim ve WhatsApp:** Genel e-posta, sosyal bağlantılar, WhatsApp numarası ve hazır mesaj. Numara boşsa destek düğmesi gizlenir.
-- Blog, projeler ve slider ayrı bölümlerden yönetilir. Kaldırılan Our People editörü kapalıdır.
+| Bölüm | Yönetilen içerik |
+| --- | --- |
+| Formlar ve başvurular | Alıcılar, form metinleri, ek dosya sınırları, özel gelen kutusu, SMTP ve önizleme/canlı modu |
+| Projeler | İhtiyaç, Seafort kapsamı, yöntem, doğrulanmış sonuç, fotoğraf açıklamaları ve yayın onayı |
+| Belgeler | Broşür, sertifika, kaynak dokümanı ve sürdürülebilirlik PDF’leri; dil, sürüm ve yayın izni |
+| Referanslar | İzinli firma logoları, ilişki türü ve müşteri alıntıları |
+| Çeviriler | İngilizce kaynak metinlerin diğer dillerdeki karşılıkları |
+| Sayfalar / genel ayarlar | Metinler, görseller, iletişim, WhatsApp ve sosyal hesaplar |
 
-Diğer dil seçenekleri sürümle birlikte gelen çeviri kataloglarını kullanır. Sonradan düzenlenen İngilizce metinlerin çevirileri `public_html/assets/locales` içinde ayrıca güncellenmelidir.
+Blog, ana sayfa slider’ı ve sayfa/projeye özel broşürler de panelden yönetilir. Ege Deniz içeriği ve Osmangazi vakası eksik şirket bilgileri tamamlanmadan hazır referans olarak yayımlanmaz. Tarihsel çalışan/deneyim rakamları ayrıca teyit gerektirir; onaysız sayılar gösterilmez.
 
-## Sunucuya kurulum
+## Formlar ve e-posta
 
-Klasörleri kardeş olarak yerleştirin:
+- Varsayılan **önizleme modu**, başvuruyu özel gelen kutusuna kaydeder ve **e-posta göndermez**.
+- Teklif alıcısı `contact@seafortservice.com`, kariyer alıcısı `careers@seafortservice.com`; ikisi ayrı ayrı değiştirilebilir.
+- SMTP hesabını ve parolasını yönetim panelinden girin. Parola ziyaretçilere gösterilmez; özel storage içinde tutulur.
+- Canlı moda geçmeden alıcıları, gönderici hesabını ve gerçek teslimi kontrollü bir testle doğrulayın. SMTP sunucusunun kabulü, alıcının gelen kutusuna teslimin kanıtı değildir. Bu sürüm için gerçek dış teslim testi tamamlandı iddiası yoktur.
+- CV ve teklif ekleri web kökü dışında tutulur; yönetici girişi olmadan indirilemez. Uygulanan dosya türü/boyut sınırları panelden yönetilir.
 
-```text
-domain-root/
-├── public_html/       Web kökü
-└── seafort/           Özel uygulama, içerik ve yönetici hesabı
-```
+## İçerik ve sunucuya aktarım
 
-`seafort` klasörü web kökünün dışında kalmalıdır. `seafort/storage` ve `public_html/uploads` PHP kullanıcısı tarafından yazılabilir olmalıdır. Önerilen başlangıç izinleri: storage `0700`, JSON dosyaları `0600`, uploads `0755`.
+Yeni vakalar temel bilgiler, ana görsel ve yayın onayı tamamlanmadan yayımlanamaz. Taslak önizlemesi yalnızca yöneticilere açıktır. Osmangazi başlangıç taslağında sonuç, proje tarihi, müşteri ve fotoğraf uydurulmamıştır. Belge veya referans dosyası bulunmayan alanlar gerçek içerik gelene kadar boş kalır.
 
-Yeni kurulumda `tools/setup.php` çalıştırın veya örnek ayar/başlangıç dosyalarını uygun konumlara kopyalayın. Alan adını `seafort/app/config.php`, `public_html/.htaccess` ve `public_html/robots.txt` içinde hedef sunucuya göre düzenleyin. `.htaccess` HTTPS ve canonical alan adı yönlendirmesi içerir; yerel PHP sunucusu bu dosyayı kullanmaz. Test alt alanında `indexable` kapalı kalmalıdır.
+Sunucuda `public_html` web kökü, `seafort` ise bunun dışında kardeş klasör olmalıdır. CLI yardımcıları `tools` klasöründe bulunur. Mevcut kurulum güncellenirken **config.php, seafort/storage ve public_html/uploads korunmalıdır**; seed dosyaları canlı içeriklerin üzerine kopyalanmaz.
 
-Mevcut site güncellenirken canlı `config.php`, `seafort/storage` ve `public_html/uploads` korunmalıdır. Başlangıç verileri canlı içeriklerin üzerine kopyalanmaz. Bu repo Hostinger’e otomatik dağıtım yapmaz.
+Sunucuda dosyalar yerleştirildikten sonra `php seafort/bin/upgrade-preview.php` komutu eski rehber atıflarını ve eksik proje taslağını mevcut içerikleri koruyarak günceller.
 
-## Dosyalar
+Alan adını `seafort/app/config.php`, `.htaccess` ve `robots.txt` içinde hedef ortama göre düzenleyin. Önizlemede indeksleme kapalı kalmalıdır. Yerel PHP sunucusu `.htaccess` kurallarını kullanmaz.
 
-```text
-public_html/           Ziyaretçiye açık giriş dosyaları ve statik medya
-seafort/app/           PHP uygulaması ve sayfa şablonları
-seafort/bin/           Terminalden yönetici oluşturma aracı
-seafort/seed/          Yayımlanmış başlangıç içerikleri
-seafort/storage/       Yerelde/sunucuda oluşur; Git dışında tutulur
-tools/setup.php       Mevcut içeriği koruyan ilk kurulum
-tools/router.php      Yerel PHP geliştirme sunucusu yönlendirmesi
-```
-
-Tanıtım videosu ve görseller repoya dahildir. Yönetici bilgileri, canlı iletişim ayarları, özel çalışan kayıtları, yayımlanmamış yazılar ve yüklenen PDF/görseller dahil değildir. Teklif ve kariyer sayfaları e-posta taslağı hazırlar; SMTP gönderimi bağlı değildir.
+Özel ayarlar, yönetici bilgileri, başvurular, SMTP parolası ve kullanıcı yüklemeleri Git dışında tutulur. Bu sürüm yerel önizlemedir; Hostinger’e, WordPress’e veya GitHub Pages’e otomatik yayın yapmaz.
