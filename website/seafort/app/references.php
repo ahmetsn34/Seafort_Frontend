@@ -5,14 +5,15 @@ declare(strict_types=1);
 function sf_reference_defaults(): array
 {
     return [
-        'version'=>1,
+        'version'=>2,
         'settings'=>[
-            'logos_eyebrow'=>'WORKING RELATIONSHIPS', 'logos_title'=>'Companies connected to our work.',
+            'page_title'=>'References', 'page_intro'=>'Companies from our reference archive and written feedback shared with permission.',
+            'logos_eyebrow'=>'COMPANY REFERENCES', 'logos_title'=>'Companies in our reference archive.',
             'logos_intro'=>'', 'quotes_eyebrow'=>'PROJECT FEEDBACK', 'quotes_title'=>'In their words.', 'quotes_intro'=>'',
         ],
         'logos'=>[], 'quotes'=>[],
         'custom_page'=>[
-            'enabled'=>false, 'title'=>'Ege Deniz', 'intro'=>'', 'body'=>'', 'cover'=>'',
+            'enabled'=>false, 'title'=>'EGE DERİN', 'intro'=>'', 'body'=>'', 'cover'=>'',
             'cover_alt'=>'', 'role'=>'', 'source_note'=>'', 'permission'=>false,
         ],
     ];
@@ -27,6 +28,8 @@ function sf_reference_normalise(array $data): array
             if (isset($data[$group][$key]) && gettype($value)===gettype($data[$group][$key])) $defaults[$group][$key]=$data[$group][$key];
         }
     }
+    $custom=$defaults['custom_page'];
+    if (in_array($custom['title'],['Ege Deniz','EGE DENIZ'],true) && $custom['intro']==='' && $custom['body']==='' && $custom['role']==='' && !$custom['enabled']) $defaults['custom_page']['title']='EGE DERİN';
     return $defaults;
 }
 
@@ -87,7 +90,7 @@ function sf_reference_validate(string $type,array $input): array
     if ($type==='logos') {
         $fields['image']=sf_cover_path($fields['image']);
         $relationship=$input['relationship']??'';
-        if (!in_array($relationship,['','customer','partner','supplier'],true)) throw new InvalidArgumentException('Firmanın ilişki türünü seçin.');
+        if (!in_array($relationship,['','reference','customer','partner','supplier'],true)) throw new InvalidArgumentException('Firmanın ilişki türünü seçin.');
         $fields['relationship']=$relationship;
         if ($status==='published' && $relationship==='') throw new InvalidArgumentException('Yayımlamadan önce firmanın doğrulanmış ilişki türünü seçin.');
         if ($status==='published' && (sf_strlen($fields['name'])<2 || $fields['image']==='')) throw new InvalidArgumentException('Logo yayımlamak için gerçek firma adı ve görsel ekleyin.');
@@ -142,7 +145,7 @@ function sf_reference_save_configuration(array $input,string $revision): void
     $page['enabled']=($raw['enabled']??'')==='1';$page['permission']=($raw['permission']??'')==='1';
     $page['cover']=sf_cover_path($page['cover']);
     if ($page['cover']!=='' && $page['cover_alt']==='') throw new InvalidArgumentException('Sayfa görseline kısa bir açıklama ekleyin.');
-    if ($page['enabled'] && !sf_reference_custom_ready($page)) throw new InvalidArgumentException('Ege Deniz sayfasını açmak için başlık, giriş, içerik, Seafort’un rolü ve yayın iznini tamamlayın.');
+    if ($page['enabled'] && !sf_reference_custom_ready($page)) throw new InvalidArgumentException('EGE DERİN sayfasını açmak için başlık, giriş, içerik, Seafort’un rolü ve yayın iznini tamamlayın.');
     sf_update_json('references.json',static function(array &$saved) use ($revision,$settings,$page):void {
         $data=sf_reference_normalise($saved);
         if ($revision==='' || !hash_equals(sf_content_digest($data),$revision)) throw new InvalidArgumentException('Ayarlar başka bir sekmede değişti. Sayfayı yenileyin.');
@@ -151,11 +154,24 @@ function sf_reference_save_configuration(array $input,string $revision): void
 }
 
 /** Returns approved public fields only; internal sources and permission notes stay private. */
-function sf_reference_custom_page(string $slug): ?array
+function sf_reference_custom_page(string $slug,bool $allowPreview=false): ?array
 {
-    if ($slug!=='ege-deniz') return null;
-    $page=sf_reference_data()['custom_page'];if (!sf_reference_custom_ready($page)) return null;
-    return ['slug'=>'ege-deniz']+array_intersect_key($page,array_flip(['title','intro','body','cover','cover_alt','role']));
+    if ($slug!=='ege-derin') return null;
+    $page=sf_reference_data()['custom_page'];
+    $fields=array_intersect_key($page,array_flip(['title','intro','body','cover','cover_alt','role']));
+    if (sf_reference_custom_ready($page)) return ['slug'=>'ege-derin','preview_placeholder'=>false]+$fields;
+    if (!$allowPreview) return null;
+    // Explicit preview copy is never saved as company evidence or published by this fallback.
+    $fallback=[
+        'title'=>'EGE DERİN',
+        'intro'=>'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        'body'=>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae arcu quis mauris luctus posuere. Sed dignissim, justo eget tempor facilisis, neque lectus volutpat eros.\n\nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.\n\nAenean sit amet erat sed nibh porttitor aliquet. Curabitur vitae magna non erat posuere tristique. Donec commodo sapien at enim consequat, non dictum nisl fermentum.",
+        'role'=>'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae arcu quis mauris luctus posuere.',
+        'cover'=>'/assets/project/underwater-hull-detail.webp',
+        'cover_alt'=>'Illustrative underwater image from the Seafort media archive',
+    ];
+    foreach($fallback as $key=>$value) if(($fields[$key]??'')==='')$fields[$key]=$value;
+    return ['slug'=>'ege-derin','preview_placeholder'=>true]+$fields;
 }
 
 function sf_reference_logos_render(): void

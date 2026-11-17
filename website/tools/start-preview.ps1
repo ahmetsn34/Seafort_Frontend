@@ -38,6 +38,9 @@ try {
     & $phpExecutable (Join-Path $PSScriptRoot 'migrate-forms.php')
     if ($LASTEXITCODE -ne 0) { throw 'Form metni gecisi tamamlanamadi.' }
 
+    & $phpExecutable (Join-Path $websiteRoot 'seafort/bin/upgrade-design.php')
+    if ($LASTEXITCODE -ne 0) { throw 'Tasarim gecisi tamamlanamadi.' }
+
     if ($CheckOnly) {
         Write-Host 'Kontrol tamamlandi. Mevcut hesaplar ve kayitlar korundu; sunucu baslatilmadi.' -ForegroundColor Green
     } else {

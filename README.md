@@ -1,6 +1,6 @@
 # Seafort Website
 
-Seafort’un bağımsız PHP web sitesi ve içerik yönetimi. **1.4.0-preview** sürümü [website](website/) klasöründedir; bu sürüm yerel inceleme için hazırlanmıştır.
+Seafort’un bağımsız PHP web sitesi ve içerik yönetimi. **1.5.0-preview** sürümü [website](website/) klasöründedir; bu sürüm yerel inceleme için hazırlanmıştır.
 
 - Ayrı teklif ve kariyer formları, özel dosya ekleri ve yönetici gelen kutusu.
 - Yapılandırılabilir SMTP; varsayılan önizleme modunda e-posta gönderilmez.

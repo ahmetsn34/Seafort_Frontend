@@ -1,0 +1,94 @@
+/* An editorial About page and balanced reading layouts for interior content. */
+.about-editorial{background:#fff;color:var(--navy)}
+.about-opening{padding:142px 0 54px}
+.about-breadcrumbs{color:#627a87;margin-bottom:35px}
+.about-breadcrumbs a{color:#486879}
+.about-breadcrumbs a:hover{color:var(--blue)}
+.about-breadcrumbs>span:last-child{color:#486879}
+.about-opening-copy{max-width:1000px}
+.about-opening h1{font-size:clamp(43px,5.2vw,70px);line-height:1.09;letter-spacing:-2.4px;font-weight:600;margin:16px 0 23px;max-width:19ch}
+.about-lead{font-size:clamp(17px,1.65vw,21px);line-height:1.75;max-width:69ch;color:#476171;margin:0}
+.about-photo-pair{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:24px;margin-top:40px}
+.about-photo-pair figure,.about-closing figure{margin:0;min-width:0}
+.about-photo-pair img{display:block;width:100%;height:340px;object-fit:cover;border-radius:4px}
+.about-photo-pair figure:nth-child(2) img{object-position:center}
+.about-editorial figcaption{font-size:12px;line-height:1.65;color:#637d8b;margin-top:10px}
+.about-story{padding:32px 0 66px}
+.about-story-heading{margin-bottom:35px;max-width:800px}
+.about-story-heading h2{font-size:clamp(30px,3vw,40px);line-height:1.2;letter-spacing:-1.1px;margin-top:13px}
+.about-story-heading>p:not(.eyebrow){font-size:17px;line-height:1.8;color:#476171;margin-top:18px}
+.about-story-columns{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:34px}
+.about-story-columns article{border-top:1px solid #c7d8e1;padding-top:23px;min-width:0}
+.about-story-columns h3{font-size:22px;line-height:1.35;letter-spacing:-.4px;max-width:24ch}
+.about-story-columns p{font-size:16px;line-height:1.85;color:#476171;margin-top:16px;max-width:52ch}
+.about-closing{padding:0 0 82px}
+.about-closing-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:52px;align-items:center}
+.about-closing figure img{display:block;width:100%;height:340px;object-fit:cover;object-position:center;border-radius:4px}
+.about-next-step{min-width:0}
+.about-next-step h2{font-size:clamp(30px,3.1vw,43px);line-height:1.17;letter-spacing:-1px;margin-top:15px}
+.about-next-step>p:not(.eyebrow){font-size:16px;line-height:1.85;color:#476171;margin-top:20px;max-width:45ch}
+.about-next-step .button{margin-top:26px;display:inline-flex;align-items:center;gap:20px}
+.about-next-step .button svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.5;flex:none}
+
+/* Replace the sticky narrow left rail with a heading across the reading area. */
+.interior-details{padding-block:70px 80px}
+.interior-details-heading{display:flex;justify-content:space-between;align-items:end;gap:32px;padding-bottom:32px;margin-bottom:10px;border-bottom:1px solid #c7d8e1}
+.interior-details-heading>div{max-width:850px;min-width:0}
+.interior-details-heading h2{font-size:clamp(31px,3.2vw,43px);line-height:1.2;letter-spacing:-1.1px;margin-top:13px}
+.interior-details-heading p:not(.eyebrow){font-size:17px;color:#476171;line-height:1.8;margin-top:18px;max-width:70ch}
+.interior-details-heading>.text-link{flex:none;display:inline-flex;gap:16px;white-space:normal}
+.interior-details-heading .text-link svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.5;flex:none}
+.interior-scope-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:56px;row-gap:0;align-items:start}
+.interior-scope-item{display:grid;grid-template-columns:30px minmax(0,1fr);gap:15px;padding:31px 0;border-bottom:1px solid #d9e3e8;min-width:0}
+.interior-scope-item:only-child{grid-column:1/-1;max-width:900px}
+.interior-scope-number{font-size:12px;font-weight:600;color:#2b7ca3;padding-top:7px}
+.interior-scope-item h3{font-size:25px;line-height:1.3;letter-spacing:-.5px;max-width:34ch}
+.interior-scope-item p{font-size:16px;line-height:1.85;color:#476171;margin-top:15px;max-width:65ch}
+.interior-scope-item .scope-list{margin-top:15px}
+.interior-scope-item .scope-list li{font-size:15px;line-height:1.8}
+
+@media(max-width:900px){
+ .about-opening{padding-top:124px}
+ .about-photo-pair{gap:20px}
+ .about-photo-pair img{height:300px}
+ .about-story-columns{gap:25px}
+ .about-story-columns h3{font-size:21px}
+ .about-closing-grid{gap:32px;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+ .about-closing figure img{height:320px}
+ .interior-scope-grid{column-gap:32px}
+ .interior-details-heading{align-items:start}
+ .interior-details-heading>.text-link{max-width:180px}
+}
+@media(max-width:700px){
+ .about-opening{padding:112px 0 38px}
+ .about-opening h1{font-size:46px;letter-spacing:-1.7px;margin-top:15px}
+ .about-lead{font-size:18px;line-height:1.75}
+ .about-photo-pair{grid-template-columns:1fr 1fr;gap:15px;margin-top:30px}
+ .about-photo-pair img{height:235px}
+ .about-story{padding:18px 0 44px}
+ .about-story-heading{margin-bottom:26px}
+ .about-story-columns{grid-template-columns:1fr;gap:24px}
+ .about-story-columns article{padding-top:21px}
+ .about-story-columns h3{max-width:none;font-size:23px}
+ .about-story-columns p{max-width:70ch;margin-top:11px}
+ .about-closing{padding-bottom:58px}
+ .about-closing-grid{grid-template-columns:1fr;gap:26px}
+ .about-closing figure img{height:290px}
+ .about-next-step>p:not(.eyebrow){max-width:70ch}
+ .interior-details{padding-block:45px 52px}
+ .interior-details-heading{display:block;padding-bottom:25px}
+ .interior-details-heading>.text-link{max-width:none;margin-top:16px}
+ .interior-scope-grid{grid-template-columns:1fr}
+ .interior-scope-item{padding-block:25px;grid-template-columns:27px minmax(0,1fr);gap:11px}
+ .interior-scope-item h3{font-size:24px;max-width:none}
+}
+@media(max-width:420px){
+ .about-opening h1{font-size:39px;letter-spacing:-1.4px}
+ .about-lead{font-size:17px}
+ .about-photo-pair{grid-template-columns:1fr;gap:23px}
+ .about-photo-pair img{height:230px}
+ .about-photo-pair figure:nth-child(2) img{height:210px}
+ .about-closing figure img{height:235px}
+ .about-editorial figcaption{font-size:12px}
+ .about-story-heading h2,.interior-details-heading h2{font-size:31px;letter-spacing:-.7px}
+}

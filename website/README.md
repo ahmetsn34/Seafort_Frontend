@@ -1,4 +1,4 @@
-# Seafort 1.4.0-preview
+# Seafort 1.5.0-preview
 
 PHP 8.2+ ve `fileinfo`, `json`, `session`, `openssl` eklentileri gerekir. Veritabanı, npm veya ayrı build adımı yoktur. SMTP kütüphanesi paketle birlikte gelir.
 
@@ -44,7 +44,7 @@ Parolayı terminal istediğinde belirleyin; hazır hesap/parola yoktur. Mevcut h
 | Çeviriler | İngilizce kaynak metinlerin diğer dillerdeki karşılıkları |
 | Sayfalar / genel ayarlar | Metinler, görseller, iletişim, WhatsApp ve sosyal hesaplar |
 
-Blog, ana sayfa slider’ı ve sayfa/projeye özel broşürler de panelden yönetilir. Ege Deniz içeriği ve Osmangazi vakası eksik şirket bilgileri tamamlanmadan hazır referans olarak yayımlanmaz. Tarihsel çalışan/deneyim rakamları ayrıca teyit gerektirir; onaysız sayılar gösterilmez.
+Blog, ana sayfa slider’ı ve sayfa/projeye özel broşürler de panelden yönetilir. EGE DERİN içeriği ve Osmangazi vakası eksik şirket bilgileri tamamlanmadan hazır referans olarak yayımlanmaz. Tarihsel çalışan/deneyim rakamları ayrıca teyit gerektirir; onaysız sayılar gösterilmez.
 
 ## Formlar ve e-posta
 
@@ -65,3 +65,13 @@ Sunucuda dosyalar yerleştirildikten sonra `php seafort/bin/upgrade-preview.php`
 Alan adını `seafort/app/config.php`, `.htaccess` ve `robots.txt` içinde hedef ortama göre düzenleyin. Önizlemede indeksleme kapalı kalmalıdır. Yerel PHP sunucusu `.htaccess` kurallarını kullanmaz.
 
 Özel ayarlar, yönetici bilgileri, başvurular, SMTP parolası ve kullanıcı yüklemeleri Git dışında tutulur. Bu sürüm yerel önizlemedir; Hostinger’e, WordPress’e veya GitHub Pages’e otomatik yayın yapmaz.
+
+## 17 Kasım tasarım güncellemesi
+
+About sayfası kısa metin ve üç şirket görseliyle ayrı düzen kullanır. Detay sayfalarının sabit sol sütunu kaldırılmıştır. Careers düğmesi mobil dahil header üzerinde görünürdür; mevcut özel CV yükleme akışı korunur.
+
+Ana sayfadaki logo akışı ve `/references/` listesi eski sitedeki 33 esas logoyu kullanır. Firma ve alıntı kayıtları Referanslar panelinden düzenlenir. Yazılı referanslar uydurulmamıştır.
+
+`/certificates/` yalnızca onaylı sertifika ve kaynak dokümanlarını listeler. Sayfa metinleri Belge merkezi > Sayfa metinleri bölümündedir. `/ege-derin/` gerçek içerik tamamlanana kadar yalnızca indekslemesi kapalı önizlemede açıkça işaretlenmiş Lorem ipsum gösterir.
+
+Mevcut kurulumda `php seafort/bin/upgrade-design.php` orijinal referans logolarını ekler ve About düzenini bir kez uygular; About yedeği özel storage içinde tutulur. Tekrar çalıştırıldığında sonraki yönetici düzenlemeleri korunur.

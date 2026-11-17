@@ -5,7 +5,7 @@ declare(strict_types=1);
 function sf_content_defaults(string $type): array
 {
     if ($type === 'settings') {
-        return ['company' => 'Seafort Denizcilik A.Ş.', 'email' => 'contact@seafortservice.com', 'footer_tagline' => 'Marine and offshore repair and project support.', 'archive' => ['folder_url'=>'','note'=>''], 'whatsapp' => ['number'=>'','label'=>'WhatsApp support','message'=>'Hello Seafort, I would like to discuss a project.'], 'social' => [
+        return ['company' => 'Seafort Denizcilik A.Ş.', 'email' => 'contact@seafortservice.com', 'footer_tagline' => 'Marine and offshore repair and project support.', 'navigation'=>['careers_label'=>'Careers','references_label'=>'References','certificates_label'=>'Certificates','ege_derin_label'=>'EGE DERİN'], 'archive' => ['folder_url'=>'','note'=>''], 'whatsapp' => ['number'=>'','label'=>'WhatsApp support','message'=>'Hello Seafort, I would like to discuss a project.'], 'social' => [
             'linkedin_url' => 'https://www.linkedin.com/company/seafort-service/',
             'instagram_url' => 'https://www.instagram.com/seafortservice/',
             'youtube_url' => 'https://www.youtube.com/@SeafortService',

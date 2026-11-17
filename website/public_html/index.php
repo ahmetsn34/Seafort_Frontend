@@ -13,7 +13,7 @@ if ($route === '/translations/') {
     header('X-Content-Type-Options: nosniff');
     echo json_encode(sf_translation_read($language),JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES|JSON_THROW_ON_ERROR);exit;
 }
-$aliases = ['/contact/'=>'/get-a-quote/','/industries/'=>'/services/','/services/marine-services/'=>'/marine-services-2/','/team/'=>'/about/'];
+$aliases = ['/ege-deniz/'=>'/ege-derin/','/contact/'=>'/get-a-quote/','/industries/'=>'/services/','/services/marine-services/'=>'/marine-services-2/','/team/'=>'/about/'];
 if (isset($aliases[$route])) { header('Location: '.$aliases[$route],true,301); exit; }
 foreach (sf_posts(true) as $oldPost) {
     if ($route === '/'.$oldPost['slug'].'/') { header('Location: /blog/'.rawurlencode($oldPost['slug']).'/',true,301); exit; }
@@ -23,10 +23,12 @@ if ($route === '/') {
     require __DIR__.'/../seafort/app/views/home.php'; site_footer(); exit;
 }
 if ($route === '/blog/') { require __DIR__.'/../seafort/app/views/blog.php'; exit; }
+if ($route === '/references/') { require __DIR__.'/../seafort/app/views/references-page.php'; exit; }
+if ($route === '/certificates/') { require __DIR__.'/../seafort/app/views/certificates.php'; exit; }
 if ($route === '/documents/') { require __DIR__.'/../seafort/app/views/documents.php'; exit; }
 if (preg_match('~^/documents/([a-f0-9]{32})/download/$~D',$route,$match)) { sf_documents_download($match[1]); }
-if($route==='/ege-deniz/'){
-    $customPage=sf_reference_custom_page('ege-deniz');
+if($route==='/ege-derin/'){
+    $customPage=sf_reference_custom_page('ege-derin',!$siteConfig['indexable']);
     if($customPage){site_header($customPage['title'],$route,$customPage['intro']);sf_reference_custom_render($customPage);site_footer();exit;}
 }
 if ($route === '/brochure/') { sf_send_brochure(); }

@@ -2,41 +2,46 @@
   "pages": [
     {
       "slug": "about",
-      "title": "Marine work, from workshop to onboard.",
+      "title": "Seafort.\nFrom workshop to onboard.",
       "eyebrow": "ABOUT SEAFORT",
-      "intro": "Seafort supports vessels and offshore structures with repair, maintenance, fabrication and installation. Our work connects workshop preparation with the tasks carried out on board.",
+      "intro": "Repair, fabrication and installation support for vessels and offshore structures. Practical work, connected from preparation to the onboard location.",
+      "detail_eyebrow": "HOW WE WORK",
+      "detail_title": "One scope. Connected work.",
+      "detail_intro": "",
       "sections": [
         {
-          "title": "Services that work together",
-          "body": "Steel repairs, surface preparation, coatings and equipment installation often share the same work area. We bring these activities together with underwater services and technical supply.",
-          "list": [
-            "Repair and maintenance",
-            "Marine fabrication and installation",
-            "Underwater services and technical supply"
-          ]
+          "title": "The work we bring together",
+          "body": "Steel renewal, piping, surface preparation and coatings often meet in the same work area. We coordinate these activities around the agreed repair or installation scope."
+        },
+        {
+          "title": "Prepared for the next stage",
+          "body": "Workshop preparation connects with onboard fitting, welding and finishing. Drawings, site conditions and the sequence of work guide each stage."
         },
         {
           "title": "People and coordination",
-          "body": "The technical team, equipment and access arrangements are planned around the vessel and the work location. Coordination connects each activity with the next.",
-          "list": [
-            "Technical and operational personnel",
-            "Workshop and onboard coordination"
-          ]
-        },
-        {
-          "title": "Tell us what needs doing",
-          "body": "Send the asset details, location, drawings and planned dates. Our team can review the repair or installation support you need."
+          "body": "The required trades, equipment and access arrangements are planned together. Clear communication keeps the team connected to the task and its next step."
         }
       ],
       "cta": {
         "label": "Discuss Your Project",
         "href": "/get-a-quote/"
       },
-      "cover": "/assets/archive/site-team.webp",
-      "cover_alt": "Personnel coordinating work in a marine work area",
-      "detail_eyebrow": "OUR APPROACH",
-      "detail_title": "Preparation. People. Onboard work.",
-      "detail_intro": ""
+      "cover": "/assets/archive/workshop.webp",
+      "cover_alt": "Personnel handling a fabricated steel component inside a workshop",
+      "editorial": {
+        "lead_image": "/assets/archive/workshop.webp",
+        "lead_image_alt": "Personnel handling a fabricated steel component inside a workshop",
+        "lead_caption": "Preparation in the workshop.",
+        "detail_image": "/assets/archive/onboard-assembly.webp",
+        "detail_image_alt": "Personnel working beneath a steel assembly on board a vessel",
+        "detail_caption": "Work at the onboard location.",
+        "wide_image": "/assets/archive/site-team.webp",
+        "wide_image_alt": "Personnel and coating equipment in a scaffolded work area",
+        "wide_caption": "People, equipment and access in the same work area.",
+        "cta_eyebrow": "LET’S DISCUSS THE WORK",
+        "cta_title": "Start with the scope.",
+        "cta_body": "Share the asset, location, drawings and planned dates. Our team can review the support you need."
+      }
     },
     {
       "slug": "values",

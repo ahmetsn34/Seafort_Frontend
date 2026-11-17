@@ -13,7 +13,7 @@ function sf_document_languages(): array
 
 function sf_documents_settings(): array
 {
-    $defaults=['title'=>'Company documents','intro'=>'Brochures, technical documents and sustainability information in one place.','empty_title'=>'Need a document?','empty_text'=>'Contact our team for the documentation relevant to your project.'];
+    $defaults=['title'=>'Company documents','intro'=>'Brochures, technical documents and sustainability information in one place.','empty_title'=>'Need a document?','empty_text'=>'Contact our team for the documentation relevant to your project.', 'certificate_title'=>'Certificates & technical documents', 'certificate_intro'=>'Company certificates and supporting technical documents, available as approved PDFs.', 'certificate_empty_title'=>'Certificates will be added here.', 'certificate_empty_text'=>'Approved certificate files will be listed here when available. Contact our team if you need documentation for your project.'];
     $saved=sf_read_json('document-settings.json');
     foreach($defaults as $key=>$value)if(is_string($saved[$key]??null))$defaults[$key]=$saved[$key];
     return $defaults;
@@ -23,7 +23,7 @@ function sf_documents_save_settings(array $input,string $revision): void
 {
     $defaults=sf_documents_settings();$next=[];
     foreach($defaults as $field=>$value){
-        $next[$field]=sf_document_text($input[$field]??'',str_contains($field,'title')?180:1500,true);
+        $next[$field]=sf_document_text($input[$field]??(str_starts_with($field,'certificate_')?$value:''),str_contains($field,'title')?180:1500,true);
     }
     sf_update_json('document-settings.json',static function(array &$data)use($next,$revision):void{
         if($revision===''||!hash_equals(sf_content_digest(sf_documents_settings()),$revision))throw new InvalidArgumentException('Sayfa metni başka bir sekmede değişti. Sayfayı yenileyin.');
