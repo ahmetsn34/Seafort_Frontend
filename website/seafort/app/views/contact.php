@@ -7,6 +7,7 @@ $formErrors = is_array($formResult['errors'] ?? null) ? $formResult['errors'] : 
 $formSuccess = ($formResult['success'] ?? false) === true;
 $formPreview = ($formCopy['preview'] ?? (($formCopy['mode'] ?? 'preview') === 'preview')) === true;
 $formEnabled = ($formCopy['enabled'] ?? true) === true;
+$emailOnly = ($formCopy['email_only'] ?? false) === true;
 $fieldLabels = is_array($formCopy['labels'] ?? null) ? $formCopy['labels'] : [];
 $fieldDefaults = ['name'=>'Your name','email'=>'Email address','subject'=>$career?'Role / area of interest':'Vessel / company / project','message'=>$career?'Experience and availability':'Project requirements','attachment'=>$career?'Attach your CV':'Attach a document or photograph'];
 $fieldLabel = static fn(string $key): string => (string) ($fieldLabels[$key] ?? $fieldDefaults[$key] ?? $key);
@@ -21,21 +22,41 @@ $formAction = '/'.($career ? 'careers' : 'get-a-quote').'/';
 $formReference = is_string($formResult['reference'] ?? null) ? $formResult['reference'] : '';
 $hasErrors = $formErrors !== [];
 $directEmail = (string) ($formCopy['direct_email'] ?? ($career ? ($siteConfig['careers_email'] ?? '') : $siteConfig['email']));
+$panelTitle = (string) ($formCopy[$emailOnly?'email_title':'title'] ?? ($career?'Share your experience.':'Discuss your project.'));
+$panelIntro = (string) ($formCopy[$emailOnly?'email_intro':'intro'] ?? '');
+$contactSections = $page['sections'];
+if ($emailOnly) {
+    // Adapt only known seeded directions; leave any owner-written copy untouched.
+    $emailDirections = [
+        'Use the application form on this page for recruitment enquiries. For project or service requests, use our separate project enquiry page.',
+        'Use the application form on this page for recruitment enquiries. Include your discipline, experience and availability.',
+        'Find Human Resources in our team directory for recruitment enquiries. For a general question, use the contact address shown on this page.',
+        'Use the project enquiry form on this page to discuss your requirements. Job applications have a separate Careers & Crewing page.',
+        'Use the project enquiry form on this page. Our team will review the scope and contact you using the details you provide.',
+        'Send your enquiry to the contact address shown on this page, or find the appropriate department in our team directory.',
+    ];
+    foreach ($contactSections as &$section) {
+        if (in_array($section['body'] ?? '',$emailDirections,true)) $section['body']=(!$formEnabled || $directEmail==='')?(string) $formCopy['unavailable_text']:($career?'Use the email address below for recruitment enquiries. Include your area of interest, experience and availability.':'Use the email address below to discuss your requirements. Include the work location, scope and timing.');
+    }
+    unset($section);
+}
 ?>
 <section class="section contact-section enquiry-section" id="contact-details">
 <div class="wrap contact-layout enquiry-layout">
     <div class="contact-copy enquiry-copy">
-        <p class="eyebrow"><?=h($page['eyebrow'])?></p><h2><?=h($page['sections'][0]['title'])?></h2><p><?=h($page['sections'][0]['body'])?></p>
-        <div class="contact-note enquiry-notes"><?php foreach ($page['sections'] as $i=>$section): ?><?php if ($i>0): ?><h3><?=h($section['title'])?></h3><p><?=h($section['body'])?></p><?php endif; ?><?php if (!empty($section['list'])): ?><ul class="scope-list"><?php foreach ($section['list'] as $item): ?><li><?=h($item)?></li><?php endforeach; ?></ul><?php endif; ?><?php endforeach; ?></div>
-        <div class="enquiry-alternative"><span class="eyebrow">DIRECT CONTACT</span><?php if ($directEmail!==''): ?><a class="enquiry-email" href="mailto:<?=h($directEmail)?>"><?=h($directEmail)?></a><?php endif; ?><a class="text-link" href="<?=$career?'/get-a-quote/':'/careers/'?>"><?=$career?'Have a project enquiry?':'Looking for a role with Seafort?'?><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13m-5-5 5 5-5 5"/></svg></a></div>
+        <p class="eyebrow"><?=h($page['eyebrow'])?></p><h2><?=h($contactSections[0]['title'])?></h2><p><?=h($contactSections[0]['body'])?></p>
+        <div class="contact-note enquiry-notes"><?php foreach ($contactSections as $i=>$section): ?><?php if ($i>0): ?><h3><?=h($section['title'])?></h3><p><?=h($section['body'])?></p><?php endif; ?><?php if (!empty($section['list'])): ?><ul class="scope-list"><?php foreach ($section['list'] as $item): ?><li><?=h($item)?></li><?php endforeach; ?></ul><?php endif; ?><?php endforeach; ?></div>
+        <div class="enquiry-alternative"><?php if ($formEnabled && !$emailOnly && $directEmail!==''): ?><span class="eyebrow">DIRECT CONTACT</span><a class="enquiry-email" href="mailto:<?=h(rawurlencode($directEmail))?>" data-no-translate><?=h($directEmail)?></a><?php endif; ?><a class="text-link" href="<?=$career?'/get-a-quote/':'/careers/'?>"><?=$career?'Have a project enquiry?':'Looking for a role with Seafort?'?><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13m-5-5 5 5-5 5"/></svg></a></div>
     </div>
     <div class="enquiry-panel">
-        <div class="enquiry-panel-heading"><span class="enquiry-panel-marker" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 4h10l4 4v12H5ZM14 4v5h5M9 12h6M9 16h6"/></svg></span><div><p class="eyebrow"><?=$career?'CAREER APPLICATION':'PROJECT ENQUIRY'?></p><h2><?=h((string) ($formCopy['title']??($career?'Tell us about yourself.':'Tell us what you need.')))?></h2></div></div>
-        <p class="enquiry-intro"><?=h((string) ($formCopy['intro']??($career?'Share your discipline, experience and availability with our recruitment team.':'Share the essentials so our team can review your requirements.')))?></p>
-        <?php if ($formSuccess): ?>
-            <div class="enquiry-feedback enquiry-feedback-success" id="enquiry-result" role="status" tabindex="-1" data-enquiry-feedback><span class="enquiry-feedback-symbol" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></svg></span><h3><?=($formResult['preview']??false)?'Preview submission saved.':'Thank you for getting in touch.'?></h3><p><?=h((string) (($formResult['preview']??false)?($formCopy['preview_text']??'Your details have been recorded for this preview.'):($formCopy['success_text']??'Your message has been submitted.')))?></p><?php if ($formResult['preview']??false): ?><p class="enquiry-no-email">No email has been sent.</p><?php endif; ?><?php if ($formReference!==''): ?><p class="enquiry-reference">Reference <strong data-no-translate><?=h($formReference)?></strong></p><?php endif; ?><a class="button" href="<?=h($formAction)?>?new=1#contact-details">Start another message<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13m-5-5 5 5-5 5"/></svg></a></div>
-        <?php elseif (!$formEnabled): ?>
+        <div class="enquiry-panel-heading"><span class="enquiry-panel-marker" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 4h10l4 4v12H5ZM14 4v5h5M9 12h6M9 16h6"/></svg></span><div><p class="eyebrow"><?=$career?'CAREER APPLICATION':'PROJECT ENQUIRY'?></p><h2><?=h($panelTitle)?></h2></div></div>
+        <p class="enquiry-intro"><?=h($panelIntro)?></p>
+        <?php if (!$formEnabled || ($emailOnly && $directEmail==='')): ?>
             <div class="enquiry-feedback enquiry-feedback-unavailable" role="status"><h3>This form is currently unavailable.</h3><p><?=h((string) ($formCopy['unavailable_text']??'Please use the direct contact address shown on this page.'))?></p></div>
+        <?php elseif ($emailOnly): ?>
+            <div class="enquiry-email-contact"><?php if ($hasErrors): ?><p class="enquiry-field-error" role="alert"><?=h((string) ($formErrors['form']??''))?></p><?php endif; ?><a class="button" href="mailto:<?=h(rawurlencode($directEmail))?>"><?=h((string) $formCopy['email_label'])?><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13m-5-5 5 5-5 5"/></svg></a><a class="enquiry-email" href="mailto:<?=h(rawurlencode($directEmail))?>" data-no-translate><?=h($directEmail)?></a><p class="enquiry-field-hint">The link opens your email application. Add any attachments before sending.</p></div>
+        <?php elseif ($formSuccess): ?>
+            <div class="enquiry-feedback enquiry-feedback-success" id="enquiry-result" role="status" tabindex="-1" data-enquiry-feedback><span class="enquiry-feedback-symbol" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></svg></span><h3><?=($formResult['preview']??false)?'Preview submission saved.':'Thank you for getting in touch.'?></h3><p><?=h((string) (($formResult['preview']??false)?($formCopy['preview_text']??'Your details have been recorded for this preview.'):($formCopy['success_text']??'Your message has been submitted.')))?></p><?php if ($formResult['preview']??false): ?><p class="enquiry-no-email">No email has been sent.</p><?php endif; ?><?php if ($formReference!==''): ?><p class="enquiry-reference">Reference <strong data-no-translate><?=h($formReference)?></strong></p><?php endif; ?><a class="button" href="<?=h($formAction)?>?new=1#contact-details">Start another message<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13m-5-5 5 5-5 5"/></svg></a></div>
         <?php else: ?>
             <?php if ($formPreview): ?><div class="enquiry-preview-note"><span class="enquiry-preview-dot" aria-hidden="true"></span><p><strong>Preview mode.</strong> Submissions are saved for review. No email will be sent.</p></div><?php endif; ?>
             <?php if ($hasErrors): ?><div class="enquiry-feedback enquiry-feedback-error" id="enquiry-errors" role="alert" tabindex="-1" data-enquiry-feedback><h3>Please check your message.</h3><ul><?php foreach ($formErrors as $key=>$message): ?><?php if (is_string($message)&&$message!==''): ?><li><?php if (in_array($key,['name','email','subject','message','attachment','consent'],true)): ?><a href="#enquiry-<?=h($key)?>"><?=h($message)?></a><?php else: ?><?=h($message)?><?php endif; ?></li><?php endif; ?><?php endforeach; ?></ul></div><?php endif; ?>

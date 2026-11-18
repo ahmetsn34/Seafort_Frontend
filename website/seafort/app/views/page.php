@@ -9,8 +9,11 @@ if ($contact) {
     $enquiryKind = $slug === 'careers' ? 'career' : 'quote';
     $enquiryForm = sf_enquiry_public_form($enquiryKind);
     $enquiryResult = sf_enquiry_handle($enquiryKind);
-    $enquiryCsrf = sf_enquiry_csrf();
-    $enquiryNonce = sf_enquiry_nonce();
+    $enquiryCsrf = $enquiryNonce = '';
+    if ($enquiryForm['enabled'] && !$enquiryForm['email_only']) {
+        $enquiryCsrf = sf_enquiry_csrf();
+        $enquiryNonce = sf_enquiry_nonce();
+    }
     header('Cache-Control: no-store, private');
 }
 site_header($page['title'],$route,$page['intro']);

@@ -20,12 +20,18 @@ function sf_enquiry_defaults(): array
             'quote'=>array_replace($shared, [
                 'title'=>'Tell us about your project.',
                 'intro'=>'Share the work location, scope and timing. You can attach a drawing, photograph or PDF.',
+                'email_title'=>'Discuss your project.',
+                'email_intro'=>'Email the work location, scope and timing. Attach any relevant drawings or photographs.',
+                'email_label'=>'Email your project details',
                 'allowed_types'=>['pdf','jpg','png'],
             ]),
             'career'=>array_replace($shared, [
                 'recipient'=>'careers@seafortservice.com',
                 'title'=>'Share your experience.',
                 'intro'=>'Tell us about your discipline, relevant experience and availability. You can attach your CV as a PDF.',
+                'email_title'=>'Contact our recruitment team.',
+                'email_intro'=>'Email your CV with your area of interest, relevant experience and availability.',
+                'email_label'=>'Email your CV',
                 'submit_label'=>'Send application', 'allowed_types'=>['pdf'],
                 'privacy_text'=>'I confirm that the information is accurate and may be used to respond to this application.',
                 'labels'=>['name'=>'Your name','email'=>'Email address','subject'=>'Role / area of interest','message'=>'Experience and availability','attachment'=>'CV / resume'],
@@ -97,6 +103,14 @@ function sf_enquiry_delivery_ready(array $settings): bool
     return $smtp['host']!=='' && $smtp['username']!=='' && $smtp['password']!=='' && $smtp['from_email']!=='';
 }
 
+/** Public production pages use email links until live SMTP delivery is configured. */
+function sf_enquiry_email_only(array $settings): bool
+{
+    $config=require SF_ROOT.'/app/config.php';
+    return ($config['indexable']??false)===true
+        && ($settings['mode']!=='live' || !sf_enquiry_delivery_ready($settings));
+}
+
 function sf_enquiry_save_settings(array $input,string $revision): void
 {
     $current=sf_enquiry_settings();$next=sf_enquiry_defaults();
@@ -112,6 +126,7 @@ function sf_enquiry_save_settings(array $input,string $revision): void
         $form['attachments']=($raw['attachments']??'')==='1';
         $form['recipient']=sf_enquiry_email(is_string($raw['recipient']??null)?$raw['recipient']:'',true);
         foreach (['title'=>160,'intro'=>1500,'submit_label'=>70,'privacy_text'=>1500,'success_text'=>1000,'preview_text'=>1000,'unavailable_text'=>1000] as $field=>$limit) $form[$field]=sf_enquiry_clean_text($raw[$field]??'',$limit,$field,true);
+        foreach (['email_title'=>160,'email_intro'=>1500,'email_label'=>70] as $field=>$limit) $form[$field]=sf_enquiry_clean_text($raw[$field]??$current['forms'][$kind][$field],$limit,$field,true);
         $limit=filter_var($raw['attachment_limit_mb']??null,FILTER_VALIDATE_INT,['options'=>['min_range'=>1,'max_range'=>10]]);
         if ($limit===false) throw new InvalidArgumentException('Dosya sınırı 1–10 MB olmalıdır.');
         $form['attachment_limit_mb']=$limit;
@@ -153,7 +168,9 @@ function sf_enquiry_public_form(string $kind): array
 {
     if (!in_array($kind,['quote','career'],true)) throw new InvalidArgumentException('Unknown enquiry kind.');
     $settings=sf_enquiry_settings();$form=$settings['forms'][$kind];
-    $form['direct_email']=$form['recipient'];
+    try { $form['direct_email']=sf_enquiry_email($form['recipient'],true); }
+    catch (InvalidArgumentException) { $form['direct_email']=''; }
+    $form['email_only']=sf_enquiry_email_only($settings);
     $form['mode']=$settings['mode'];$form['preview']=$settings['mode']==='preview';
     $extensions=['pdf'=>'.pdf','jpg'=>'.jpg,.jpeg','png'=>'.png'];
     $types=array_values(array_intersect($form['allowed_types'],array_keys($extensions)));
@@ -298,10 +315,18 @@ function sf_enquiry_send(array $item,array $settings): void
 
 function sf_enquiry_handle(string $kind): array
 {
-    sf_enquiry_session();
     if(!in_array($kind,['quote','career'],true))throw new InvalidArgumentException('Unknown enquiry kind.');
     $settings=sf_enquiry_settings();$form=$settings['forms'][$kind];
     $result=['errors'=>[],'values'=>['name'=>'','email'=>'','subject'=>'','message'=>'','consent'=>''],'success'=>false,'preview'=>$settings['mode']==='preview','reference'=>''];
+    // Check availability before starting a session, replaying a saved result or accepting files.
+    if(!$form['enabled'] || sf_enquiry_email_only($settings)) {
+        if(($_SERVER['REQUEST_METHOD']??'GET')==='POST') {
+            http_response_code(405);header('Allow: GET, HEAD');
+            $result['errors']['form']=$form['enabled']?'Please send your message directly by email using the address on this page.':$form['unavailable_text'];
+        }
+        return $result;
+    }
+    sf_enquiry_session();
     if(($_SERVER['REQUEST_METHOD']??'GET')!=='POST')return $result;
     $csrf=$_POST['csrf']??'';$nonce=$_POST['submission_token']??'';
     if(!is_string($csrf)||$csrf===''||!hash_equals(sf_enquiry_csrf(),$csrf)||!is_string($nonce)||!isset($_SESSION['enquiry_tokens'][$nonce])){
