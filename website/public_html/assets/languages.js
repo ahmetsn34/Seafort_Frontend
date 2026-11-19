@@ -6,6 +6,20 @@
   const requested = new URLSearchParams(location.search).get('lang') || 'en';
   const language = supported.has(requested) ? requested : 'en';
   picker.value = language;
+  const dock = document.querySelector('.language-dock');
+  const current = document.getElementById('language-current');
+  if (current) current.textContent = {en:'EN',tr:'TR',ar:'AR',ru:'RU','zh-CN':'中文'}[language];
+  if (dock) {
+    document.addEventListener('click', event => {
+      if (dock.open && !dock.contains(event.target)) dock.open = false;
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && dock.open) {
+        dock.open = false;
+        dock.querySelector('summary').focus();
+      }
+    });
+  }
   picker.addEventListener('change', () => {
     const next = new URL(location.href);
     if (picker.value === 'en') next.searchParams.delete('lang');
@@ -94,6 +108,7 @@
     })
     .catch(() => {
       picker.value = 'en';
+      if (current) current.textContent = 'EN';
       document.documentElement.dataset.languageState = 'unavailable';
       document.getElementById('language-status').textContent = 'Translation is unavailable. English content is shown.';
     });

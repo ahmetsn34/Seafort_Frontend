@@ -63,7 +63,10 @@ function site_header(string $title, string $route, string $description = '', arr
 <meta name="twitter:title" content="<?=h($seo['title'])?>"><meta name="twitter:description" content="<?=h($seo['description'])?>">
 <?php if($seo['image']): ?><meta property="og:image" content="<?=h($seo['image']['url'])?>"><meta property="og:image:width" content="<?=h($seo['image']['width'])?>"><meta property="og:image:height" content="<?=h($seo['image']['height'])?>"><meta property="og:image:type" content="<?=h($seo['image']['type'])?>"><meta property="og:image:alt" content="<?=h($seo['image_alt'])?>"><meta name="twitter:image" content="<?=h($seo['image']['url'])?>"><meta name="twitter:image:alt" content="<?=h($seo['image_alt'])?>"><?php endif; ?>
 <?php if($schemaJson!==''): ?><script type="application/ld+json"><?=$schemaJson?></script><?php endif; ?>
-<meta name="theme-color" content="#103447"><link rel="icon" href="/assets/logo-dark.png" type="image/png">
+<meta name="theme-color" content="#103447">
+<link rel="icon" href="/assets/icons/seafort-192.png" sizes="192x192" type="image/png">
+<link rel="icon" href="/assets/icons/seafort-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/assets/icons/seafort-180.png" sizes="180x180">
 <link rel="stylesheet" href="<?=sf_escape(sf_asset_url('/assets/fonts/fonts.css'))?>"><link rel="stylesheet" href="<?=sf_escape(sf_asset_url('/assets/site.css'))?>"><link rel="stylesheet" href="<?=sf_escape(sf_asset_url('/assets/pages.css'))?>"><link rel="stylesheet" href="<?=sf_escape(sf_asset_url('/assets/directory.css'))?>"><link rel="stylesheet" href="<?=sf_escape(sf_asset_url('/assets/updates.css'))?>">
 <?php if($home): ?><link rel="stylesheet" href="<?=sf_escape(sf_asset_url('/assets/slider.css'))?>"><?php endif; ?>
 <?php if ($home): $firstSlides=sf_collection('slides',true);$preloadCover=sf_cover_url((string)($firstSlides[0]['cover'] ?? '/assets/hero.png')) ?: '/assets/hero.png'; ?><link rel="preload" href="<?=h($preloadCover)?>" as="image"><?php endif; ?>
@@ -89,10 +92,13 @@ function site_header(string $title, string $route, string $description = '', arr
 </nav>
 <div class="header-actions">
 <a class="header-careers <?=$route==='/careers/'?'is-active':''?>" href="/careers/" <?=$route==='/careers/'?'aria-current="page"':''?>><?=h($siteConfig['navigation']['careers_label']??'Careers')?></a>
-<div class="language-picker" data-no-translate><label class="sr-only" for="site-language">Language</label><select id="site-language" aria-label="Language"><option value="en" lang="en">English</option><option value="tr" lang="tr">Türkçe</option><option value="ar" lang="ar">العربية</option><option value="ru" lang="ru">Русский</option><option value="zh-CN" lang="zh-CN">简体中文</option></select></div>
 <a class="button button-small header-quote" href="/get-a-quote/" <?=$route==='/get-a-quote/'?'aria-current="page"':''?>>Get a Quote</a>
 <button class="menu-toggle" id="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="primary-nav"><span></span><span></span></button>
 </div></div></header>
+<details class="language-dock" data-no-translate>
+<summary aria-label="Choose language"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c4 5 4 13 0 18M12 3c-4 5-4 13 0 18"/></svg><span id="language-current">EN</span></summary>
+<div class="language-dock-panel"><label for="site-language">Language</label><select id="site-language" aria-label="Language"><option value="en" lang="en">English</option><option value="tr" lang="tr">Türkçe</option><option value="ar" lang="ar">العربية</option><option value="ru" lang="ru">Русский</option><option value="zh-CN" lang="zh-CN">简体中文</option></select></div>
+</details>
 <p id="language-status" class="sr-only" role="status" data-no-translate></p>
 <?php site_brochure($route); ?>
 <?php }
