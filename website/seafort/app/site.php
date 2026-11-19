@@ -74,11 +74,11 @@ function site_header(string $title, string $route, string $description = '', arr
 <?php if(in_array($route,['/documents/','/certificates/','/sustainability/'],true)): ?><link rel="stylesheet" href="<?=sf_escape(sf_asset_url('/assets/documents.css'))?>"><?php endif; ?>
 <?php if($route==='/sustainability/'): ?><link rel="stylesheet" href="<?=sf_escape(sf_asset_url('/assets/sustainability.css'))?>"><?php endif; ?>
 <?php if(in_array($route,['/get-a-quote/','/careers/'],true)): ?><link rel="stylesheet" href="<?=sf_escape(sf_asset_url('/assets/forms.css'))?>"><?php endif; ?>
+<link rel="stylesheet" href="<?=sf_escape(sf_asset_url('/assets/header-20261119.css'))?>">
 </head><body id="top" class="<?=$home?'home-page':'interior-page'?><?=$route==='/sustainability/'?' sustainability-page':''?>">
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header" id="site-header"><div class="header-inner wrap">
 <a class="brand" href="/" aria-label="Seafort home"><img class="logo logo-light" src="/assets/logo-white.png" width="440" height="109" alt="Seafort Service"><img class="logo logo-dark" src="/assets/logo-dark.png" width="445" height="117" alt="" aria-hidden="true"></a>
-<div class="header-actions"><a class="header-careers <?=$route==='/careers/'?'is-active':''?>" href="/careers/" <?=$route==='/careers/'?'aria-current="page"':''?>><?=h($siteConfig['navigation']['careers_label']??'Careers')?></a><button class="menu-toggle" id="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="primary-nav"><span></span><span></span></button></div>
 <nav class="primary-nav" id="primary-nav" aria-label="Main navigation">
 <a class="nav-link <?=$home?'active':''?>" href="/" <?=$home?'aria-current="page"':''?>>Home</a>
 <a class="nav-link <?=$about?'active':''?>" href="/about/" <?=$route==='/about/'?'aria-current="page"':''?>>About</a>
@@ -86,9 +86,13 @@ function site_header(string $title, string $route, string $description = '', arr
 <a class="nav-link <?=$route==='/references/'?'active':''?>" href="/references/" <?=$route==='/references/'?'aria-current="page"':''?>><?=h($siteConfig['navigation']['references_label']??'References')?></a>
 <a class="nav-link <?=str_starts_with($route,'/projects/')?'active':''?>" href="/projects/" <?=$route==='/projects/'?'aria-current="page"':''?>>Projects</a>
 <a class="nav-link <?=$route==='/sustainability/'?'active':''?>" href="/sustainability/">Sustainability</a>
-<a class="button button-small" href="/get-a-quote/" <?=$route==='/get-a-quote/'?'aria-current="page"':''?>>Get a Quote</a>
+</nav>
+<div class="header-actions">
+<a class="header-careers <?=$route==='/careers/'?'is-active':''?>" href="/careers/" <?=$route==='/careers/'?'aria-current="page"':''?>><?=h($siteConfig['navigation']['careers_label']??'Careers')?></a>
 <div class="language-picker" data-no-translate><label class="sr-only" for="site-language">Language</label><select id="site-language" aria-label="Language"><option value="en" lang="en">English</option><option value="tr" lang="tr">Türkçe</option><option value="ar" lang="ar">العربية</option><option value="ru" lang="ru">Русский</option><option value="zh-CN" lang="zh-CN">简体中文</option></select></div>
-</nav></div></header>
+<a class="button button-small header-quote" href="/get-a-quote/" <?=$route==='/get-a-quote/'?'aria-current="page"':''?>>Get a Quote</a>
+<button class="menu-toggle" id="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="primary-nav"><span></span><span></span></button>
+</div></div></header>
 <p id="language-status" class="sr-only" role="status" data-no-translate></p>
 <?php site_brochure($route); ?>
 <?php }
