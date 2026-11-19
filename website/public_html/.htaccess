@@ -8,12 +8,42 @@ Require all granted
 </FilesMatch>
 </IfModule>
 
+# File authorization is inherited even when a child .htaccess owns its rewrites.
+# AND preserves any stricter authentication already required by the child app.
+<IfModule mod_setenvif.c>
+SetEnvIfNoCase Host "^(?:www\.)?seafortservice\.com(?::[0-9]+)?$" SF_MAIN_SITE_HOST
+SetEnvIfNoCase Request_URI "^/(?:bakimtest|portal)(?:/|$)" SF_NESTED_APP_PATH
+</IfModule>
+<IfModule mod_authz_core.c>
+<FilesMatch ".*">
+    AuthMerging And
+    <RequireAny>
+        <RequireAll>
+            Require all granted
+            Require not env SF_MAIN_SITE_HOST
+        </RequireAll>
+        <RequireAll>
+            Require all granted
+            Require not env SF_NESTED_APP_PATH
+        </RequireAll>
+    </RequireAny>
+</FilesMatch>
+</IfModule>
+
 <IfModule mod_rewrite.c>
 RewriteEngine On
+# Nested document roots (bakimtest and portal) keep their own routing.
+# Use L rather than END so each child application's .htaccess can still run.
+RewriteCond %{HTTP_HOST} !^(?:www\.)?seafortservice\.com(?::[0-9]+)?$ [NC]
+RewriteRule ^ - [L]
+
 # Production HTTPS and canonical domain; origin must report HTTPS correctly.
 RewriteCond %{HTTPS} !=on [OR]
 RewriteCond %{HTTP_HOST} !^seafortservice\.com$ [NC]
 RewriteRule ^ https://seafortservice.com%{REQUEST_URI} [R=308,L,NE]
+
+# Nested subdomains are not additional paths on the main website.
+RewriteRule ^(?:bakimtest|portal)(?:/|$) - [R=404,L,NC]
 
 RewriteRule ^(?:sitemap\.xml|robots\.txt)$ index.php [L,QSA]
 RewriteCond %{REQUEST_FILENAME} !-f
