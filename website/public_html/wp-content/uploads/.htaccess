@@ -1,0 +1,15 @@
+# Static compatibility assets retained from the former WordPress site.
+Options -Indexes -ExecCGI
+<IfModule mod_mime.c>
+RemoveHandler .php .php3 .php4 .php5 .php7 .php8 .phtml .phar .cgi .pl .py .sh .shtml
+RemoveType .php .php3 .php4 .php5 .php7 .php8 .phtml .phar
+</IfModule>
+<IfModule mod_authz_core.c>
+Require all denied
+<FilesMatch "(?i)\.(?:avif|gif|jpe?g|png|webp|pdf)$">
+    Require all granted
+</FilesMatch>
+<FilesMatch "(?i)\.(?:php[0-9]*|phtml|phar|cgi|pl|py|sh|shtml|html?|js|mjs|svg)(?:\.|$)">
+    Require all denied
+</FilesMatch>
+</IfModule>

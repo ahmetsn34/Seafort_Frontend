@@ -7,6 +7,7 @@ $siteSettings = sf_site_settings();
 $siteConfig = array_replace($siteConfig, $siteSettings, ['careers_email' => sf_enquiry_public_form('career')['recipient'], 'phone' => '', 'careers_phone' => '', 'address' => '']);
 $siteData = sf_site_pages();
 $homeContent = sf_home_content();
+require_once __DIR__ . '/seo.php';
 
 function h(mixed $value): string { return sf_escape($value); }
 function site_lines(string $value): string { return nl2br(h($value), false); }
@@ -31,28 +32,37 @@ function site_image(string $key): array {
     ];
     return $images[$key] ?? $images['steel'];
 }
-function site_header(string $title, string $route, string $description = ''): void {
+function site_header(string $title, string $route, string $description = '', array $seoContext = []): void {
     global $siteConfig;
     $home = $route === '/';
-    $indexable = $siteConfig['indexable'] && (http_response_code() ?: 200) < 400;
-    $canonical = rtrim($siteConfig['base_url'], '/') . $route;
+    $seo = sf_seo_document($title,$route,$description,$siteConfig,$seoContext);
+    $indexable = $seo['indexable'];
+    $canonical = $seo['canonical'];
+    $robots = $indexable ? 'index,follow,max-image-preview:large' : (($siteConfig['indexable']??false)===true ? 'noindex,follow' : 'noindex,nofollow');
+    $schemaJson = $seo['graph'] === null ? '' : sf_seo_json($seo['graph']);
+    $schemaPolicy = $schemaJson === '' ? '' : " 'sha256-".base64_encode(hash('sha256',$schemaJson,true))."'";
     $about = in_array($route, ['/about/','/values/','/marmaris/','/manpower-team/'], true);
     $services = in_array($route, ['/services/','/maintenance-repair/','/marine-services/','/marine-services-2/','/ship-supply/','/ship-construction/','/rigging-oilfield/','/shipyard-services/'], true);
     header('Content-Type: text/html; charset=utf-8');
     header('X-Content-Type-Options: nosniff');
     header('Referrer-Policy: strict-origin-when-cross-origin');
-    header("Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; media-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'");
-    if (!$indexable) header('X-Robots-Tag: noindex, nofollow');
+    header("Content-Security-Policy: default-src 'self'; script-src 'self'".$schemaPolicy."; style-src 'self'; img-src 'self'; font-src 'self'; media-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'");
+    if (!$indexable) header('X-Robots-Tag: '.$robots);
     ?>
 <!doctype html><html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title><?=h($title)?> | Seafort</title><meta name="description" content="<?=h($description)?>">
-<?php if (!$indexable): ?><meta name="robots" content="noindex,nofollow"><?php endif; ?>
+<title><?=h($seo['title'])?></title><meta name="description" content="<?=h($seo['description'])?>">
+<meta name="robots" content="<?=h($robots)?>">
 <link rel="canonical" href="<?=h($canonical)?>">
 <meta property="og:url" content="<?=h($canonical)?>">
-<meta property="og:site_name" content="Seafort">
-<meta property="og:title" content="<?=h($title)?> | Seafort">
-<meta property="og:description" content="<?=h($description)?>">
+<meta property="og:site_name" content="<?=h(sf_seo_settings()['site_name'])?>">
+<meta property="og:type" content="<?=h($seo['type'])?>">
+<meta property="og:title" content="<?=h($seo['title'])?>">
+<meta property="og:description" content="<?=h($seo['description'])?>">
+<meta name="twitter:card" content="<?=$seo['image']?'summary_large_image':'summary'?>">
+<meta name="twitter:title" content="<?=h($seo['title'])?>"><meta name="twitter:description" content="<?=h($seo['description'])?>">
+<?php if($seo['image']): ?><meta property="og:image" content="<?=h($seo['image']['url'])?>"><meta property="og:image:width" content="<?=h($seo['image']['width'])?>"><meta property="og:image:height" content="<?=h($seo['image']['height'])?>"><meta property="og:image:type" content="<?=h($seo['image']['type'])?>"><meta property="og:image:alt" content="<?=h($seo['image_alt'])?>"><meta name="twitter:image" content="<?=h($seo['image']['url'])?>"><meta name="twitter:image:alt" content="<?=h($seo['image_alt'])?>"><?php endif; ?>
+<?php if($schemaJson!==''): ?><script type="application/ld+json"><?=$schemaJson?></script><?php endif; ?>
 <meta name="theme-color" content="#103447"><link rel="icon" href="/assets/logo-dark.png" type="image/png">
 <link rel="stylesheet" href="<?=sf_escape(sf_asset_url('/assets/fonts/fonts.css'))?>"><link rel="stylesheet" href="<?=sf_escape(sf_asset_url('/assets/site.css'))?>"><link rel="stylesheet" href="<?=sf_escape(sf_asset_url('/assets/pages.css'))?>"><link rel="stylesheet" href="<?=sf_escape(sf_asset_url('/assets/directory.css'))?>"><link rel="stylesheet" href="<?=sf_escape(sf_asset_url('/assets/updates.css'))?>">
 <?php if($home): ?><link rel="stylesheet" href="<?=sf_escape(sf_asset_url('/assets/slider.css'))?>"><?php endif; ?>

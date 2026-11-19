@@ -186,6 +186,7 @@ $statusLabels = ['published' => 'Yayında', 'draft' => 'Taslak', 'archived' => '
             <a class="side-link" href="/admin/content.php?type=home">Site metinleri</a>
             <a class="side-link" href="/admin/content.php?type=pages">Sayfa içerikleri</a>
             <a class="side-link" href="/admin/content.php?type=settings">İletişim ve WhatsApp</a>
+            <a class="side-link" href="/admin/seo.php">SEO ve paylaşım</a>
             <a class="side-link" href="/blog/" target="_blank" rel="noopener"> Blogu görüntüle</a>
             <a class="side-link" href="/" target="_blank" rel="noopener"> Siteyi görüntüle</a>
         <a class="side-link" href="/admin/documents.php">Belge merkezi</a><a class="side-link" href="/admin/references.php">Referanslar ve firmalar</a><a class="side-link" href="/admin/translations.php">Çeviriler</a></nav>

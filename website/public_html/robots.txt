@@ -1,5 +1,9 @@
 User-agent: *
 Allow: /
 Disallow: /admin/
+Disallow: /seafort/
+Disallow: /tools/
+Disallow: /translations/
+Disallow: /brochure/
 
 Sitemap: https://seafortservice.com/sitemap.xml
