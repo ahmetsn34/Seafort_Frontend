@@ -178,9 +178,35 @@
     pointer-events:none;
 }
 .language-dock-panel select:focus-visible { outline:3px solid #25a8e0; outline-offset:2px; }
-@media(max-width:640px) {
-    .language-dock { top:auto; bottom:calc(18px + env(safe-area-inset-bottom,0px)); transform:none; }
-    .language-dock summary { flex-direction:row; gap:7px; width:74px; min-height:44px; padding:10px; }
-    .language-dock summary svg { width:20px; height:20px; }
-    .language-dock-panel { top:auto; bottom:calc(100% + 10px); left:12px; transform:none; max-width:calc(100vw - 24px); }
+@media(min-width:761px) {
+    /* Both side tabs sit outside the reading area, including in RTL. */
+    main .wrap, .footer .wrap { width:min(1480px,calc(100% - 120px)); }
+}
+@media(max-width:760px) {
+    /* Use the fixed top row so the tab never tracks over text or slide controls. */
+    .site-header .header-inner {
+        width:auto;
+        margin-left:calc(56px + env(safe-area-inset-left,0px));
+        margin-right:max(16px,env(safe-area-inset-right,0px));
+    }
+    .language-dock {
+        top:17px;
+        left:env(safe-area-inset-left,0px);
+        transform:none;
+        z-index:101;
+    }
+    .language-dock summary {
+        gap:2px;
+        min-height:44px;
+        padding:4px;
+        font-size:.75rem;
+        line-height:1.1;
+    }
+    .language-dock summary svg { width:17px; height:17px; }
+    .language-dock-panel {
+        top:calc(100% + 8px);
+        left:6px;
+        transform:none;
+        max-width:calc(100vw - 24px);
+    }
 }

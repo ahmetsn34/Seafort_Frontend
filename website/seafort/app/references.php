@@ -23,6 +23,12 @@ function sf_reference_normalise(array $data): array
 {
     $defaults=sf_reference_defaults();
     foreach (['logos','quotes'] as $type) $defaults[$type]=is_array($data[$type]??null)?array_values(array_filter($data[$type],'is_array')):[];
+    // Keep legacy sample records editable as drafts on every installation.
+    foreach ($defaults['quotes'] as $index=>$quote) {
+        if (($quote['status']??'')==='published' && sf_reference_sample_quote($quote)) {
+            $defaults['quotes'][$index]['status']='draft';
+        }
+    }
     foreach (['settings','custom_page'] as $group) {
         foreach ($defaults[$group] as $key=>$value) {
             if (isset($data[$group][$key]) && gettype($value)===gettype($data[$group][$key])) $defaults[$group][$key]=$data[$group][$key];
@@ -62,6 +68,14 @@ function sf_reference_link(string $value): string
     return $value;
 }
 
+function sf_reference_sample_quote(array $item): bool
+{
+    foreach (['quote','name','role','company'] as $key) {
+        if (preg_match('/^\s*lorem\s+[iİı]\x{0307}?psum\b/iu',(string)($item[$key]??''))===1) return true;
+    }
+    return false;
+}
+
 function sf_reference_items(string $type,bool $publishedOnly=true): array
 {
     $items=sf_reference_data()[sf_reference_type($type)];
@@ -95,7 +109,10 @@ function sf_reference_validate(string $type,array $input): array
         if ($status==='published' && $relationship==='') throw new InvalidArgumentException('Yayımlamadan önce firmanın doğrulanmış ilişki türünü seçin.');
         if ($status==='published' && (sf_strlen($fields['name'])<2 || $fields['image']==='')) throw new InvalidArgumentException('Logo yayımlamak için gerçek firma adı ve görsel ekleyin.');
         if ($fields['image_alt']==='') $fields['image_alt']=$fields['name'];
-    } elseif ($status==='published' && sf_strlen($fields['quote'])<10) throw new InvalidArgumentException('Yayımlamak için müşterinin onayladığı alıntıyı ekleyin.');
+    } elseif ($status==='published') {
+        if (sf_reference_sample_quote($fields)) throw new InvalidArgumentException('Örnek metni taslak olarak kaydedebilir veya onaylı müşteri bilgileriyle değiştirebilirsiniz.');
+        if (sf_strlen($fields['quote'])<10) throw new InvalidArgumentException('Yayımlamak için müşterinin onayladığı alıntıyı ekleyin.');
+    }
     if ($status==='published' && !$fields['permission']) throw new InvalidArgumentException('Yayımlamadan önce içerik ve kullanım izinlerini doğrulayın.');
     return $fields;
 }
