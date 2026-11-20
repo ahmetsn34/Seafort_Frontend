@@ -13,9 +13,31 @@ function sf_document_languages(): array
 
 function sf_documents_settings(): array
 {
-    $defaults=['title'=>'Company documents','intro'=>'Brochures, technical documents and sustainability information in one place.','empty_title'=>'Need a document?','empty_text'=>'Contact our team for the documentation relevant to your project.', 'certificate_title'=>'Certificates & technical documents', 'certificate_intro'=>'Company certificates and supporting technical documents, available as approved PDFs.', 'certificate_empty_title'=>'Certificates will be added here.', 'certificate_empty_text'=>'Approved certificate files will be listed here when available. Contact our team if you need documentation for your project.'];
+    $defaults = [
+        'title' => 'Company documents',
+        'intro' => 'Brochures, technical documents and sustainability reports.',
+        'empty_title' => 'Looking for a brochure?',
+        'empty_text' => 'Email our team with the document you need and your preferred language.',
+        'certificate_title' => 'Certificates & technical documents',
+        'certificate_intro' => 'Company certificates and welding documentation.',
+        'certificate_empty_title' => 'Need a certificate?',
+        'certificate_empty_text' => 'Tell us which certificate or welding document your project requires.',
+    ];
+    // Older admin saves can contain the original defaults verbatim.
+    $previous = [
+        'intro' => 'Brochures, technical documents and sustainability information in one place.',
+        'empty_title' => 'Need a document?',
+        'empty_text' => 'Contact our team for the documentation relevant to your project.',
+        'certificate_intro' => 'Company certificates and supporting technical documents, available as approved PDFs.',
+        'certificate_empty_title' => 'Certificates will be added here.',
+        'certificate_empty_text' => 'Approved certificate files will be listed here when available. Contact our team if you need documentation for your project.',
+    ];
     $saved=sf_read_json('document-settings.json');
-    foreach($defaults as $key=>$value)if(is_string($saved[$key]??null))$defaults[$key]=$saved[$key];
+    foreach ($defaults as $key => $value) {
+        if (is_string($saved[$key] ?? null) && $saved[$key] !== ($previous[$key] ?? null)) {
+            $defaults[$key] = $saved[$key];
+        }
+    }
     return $defaults;
 }
 
@@ -142,11 +164,10 @@ function sf_documents_download(string $id): never
     sf_document_send($item);
 }
 
-function sf_documents_render(string $category=''): void
+function sf_documents_render(string $category='', ?array $items=null): void
 {
-    $language=is_string($_GET['language']??null)&&array_key_exists($_GET['language'],sf_document_languages())?$_GET['language']:'';
-    $items=sf_documents_list(true,$category,$language);$settings=sf_documents_settings();
-    if($items===[]){echo '<div class="documents-empty"><span class="eyebrow">DOCUMENTATION</span><h2>'.sf_escape($settings['empty_title']).'</h2><p>'.sf_escape($settings['empty_text']).'</p><a class="button" href="/get-a-quote/">Contact our team</a></div>';return;}
+    $items ??= sf_documents_list(true,$category);
+    if (!$items) return;
     echo '<div class="documents-grid">';
     foreach($items as $item){
         echo '<article class="document-card"><div class="document-card-top"><span class="document-kind">'.sf_escape(sf_document_categories()[$item['category']]??'Document').'</span><span class="document-format">PDF</span></div><h2>'.sf_escape($item['title']).'</h2>';

@@ -1,4 +1,7 @@
 .enquiry-section{background:linear-gradient(180deg,#f5f8fa 0,#fff 74%);padding-block:80px 100px}
+.enquiry-hero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px;margin-block-start:24px}
+.page-hero-copy .enquiry-hero-actions a{margin:0;max-width:100%}
+#enquiry-panel{scroll-margin-top:100px}
 .contact-layout.enquiry-layout{grid-template-columns:minmax(0,.83fr) minmax(0,1.17fr);gap:72px;align-items:start}
 .enquiry-copy{padding-top:12px;min-width:0}.enquiry-copy h2{font-size:clamp(31px,3vw,43px);line-height:1.2;letter-spacing:-1.3px;max-width:13ch}
 .enquiry-copy>p:not(.eyebrow){max-width:43ch;font-size:15px;line-height:1.8}

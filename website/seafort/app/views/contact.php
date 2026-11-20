@@ -48,7 +48,7 @@ if ($emailOnly) {
         <div class="contact-note enquiry-notes"><?php foreach ($contactSections as $i=>$section): ?><?php if ($i>0): ?><h3><?=h($section['title'])?></h3><p><?=h($section['body'])?></p><?php endif; ?><?php if (!empty($section['list'])): ?><ul class="scope-list"><?php foreach ($section['list'] as $item): ?><li><?=h($item)?></li><?php endforeach; ?></ul><?php endif; ?><?php endforeach; ?></div>
         <div class="enquiry-alternative"><?php if ($formEnabled && !$emailOnly && $directEmail!==''): ?><span class="eyebrow">DIRECT CONTACT</span><a class="enquiry-email" href="mailto:<?=h(rawurlencode($directEmail))?>" data-no-translate><?=h($directEmail)?></a><?php endif; ?><a class="text-link" href="<?=$career?'/get-a-quote/':'/careers/'?>"><?=$career?'Have a project enquiry?':'Looking for a role with Seafort?'?><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13m-5-5 5 5-5 5"/></svg></a></div>
     </div>
-    <div class="enquiry-panel">
+    <div class="enquiry-panel" id="enquiry-panel">
         <div class="enquiry-panel-heading"><span class="enquiry-panel-marker" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 4h10l4 4v12H5ZM14 4v5h5M9 12h6M9 16h6"/></svg></span><div><p class="eyebrow"><?=$career?'CAREER APPLICATION':'PROJECT ENQUIRY'?></p><h2><?=h($panelTitle)?></h2></div></div>
         <p class="enquiry-intro"><?=h($panelIntro)?></p>
         <?php if (!$formEnabled || ($emailOnly && $directEmail==='')): ?>

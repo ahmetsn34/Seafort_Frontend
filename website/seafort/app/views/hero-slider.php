@@ -1,44 +1,36 @@
 <?php
 declare(strict_types=1);
-$heroSlides = function_exists('sf_collection') ? sf_collection('slides', true) : [];
+$heroSlides = sf_collection('slides', true);
 if (!$heroSlides) {
     $heroSlides = [[
-        'title' => 'Marine & offshore repair & maintenance.',
-        'description' => 'Steel repairs, protective coatings, equipment installation and underwater services. Practical support for your vessel and offshore projects, defined around the work you need.',
-        'eyebrow' => 'MARINE & OFFSHORE SERVICES',
+        'title' => 'Marine repair. Offshore support.',
         'cover' => '/assets/project/marine-offshore-worksite.webp',
         'cover_alt' => 'Offshore vessel alongside a worksite with scaffolding, equipment and personnel',
-        'link_label' => 'Discuss Your Project',
-        'link_href' => '/get-a-quote/',
     ]];
 }
 $heroSlideCount = count($heroSlides);
+$meta = $homeContent['meta'];
 ?>
 <section class="hero-carousel" id="hero-carousel" role="region" aria-roledescription="carousel" aria-label="Seafort services" tabindex="0">
-    <h1 class="carousel-sr-only"><?=h($homeContent['meta']['hero_title'])?></h1>
     <div class="carousel-stage">
         <?php foreach ($heroSlides as $slideIndex => $heroSlide):
-            $slideCover = sf_cover_url((string)($heroSlide['cover'] ?? '')) ?: '/assets/project/marine-offshore-worksite.webp';
-            $slideHref = (string)($heroSlide['link_href'] ?? '/get-a-quote/');
-            $slideHasCta = trim((string)($heroSlide['link_label'] ?? '')) !== '' && trim((string)($heroSlide['link_href'] ?? '')) !== '';
-            if (!str_starts_with($slideHref, '/') || str_starts_with($slideHref, '//') || preg_match('/[\x00-\x20\\\\]/', $slideHref)) $slideHref = '/get-a-quote/';
+            $cover = sf_cover_url((string)($heroSlide['cover'] ?? '')) ?: '/assets/project/marine-offshore-worksite.webp';
         ?>
         <div class="carousel-slide" data-slide role="group" aria-roledescription="slide" aria-label="<?=h((string)($slideIndex + 1))?> of <?=h((string)$heroSlideCount)?>" <?=$slideIndex > 0 ? 'hidden inert' : ''?>>
-            <img class="carousel-image" src="<?=h($slideCover)?>" width="1680" height="1077" alt="<?=h($heroSlide['cover_alt'] ?? '')?>" <?=$slideIndex === 0 ? 'fetchpriority="high"' : 'loading="lazy" fetchpriority="low"'?>>
-            <div class="carousel-shade" aria-hidden="true"></div>
-            <div class="wrap carousel-content">
-                <div class="carousel-copy">
-                    <p class="eyebrow eyebrow-light carousel-eyebrow"><span aria-hidden="true"></span><?=h($heroSlide['eyebrow'] ?? 'MARINE & OFFSHORE SERVICES')?></p>
-                    <h2 class="carousel-title"><?=h($heroSlide['title'] ?? '')?></h2>
-                    <p class="carousel-description"><?=h($heroSlide['description'] ?? '')?></p>
-                    <div class="carousel-actions">
-                        <?php if ($slideHasCta): ?><a class="button" href="<?=h($slideHref)?>"><?=h($heroSlide['link_label'])?></a><?php endif; ?>
-                        <a class="text-link light" href="#services"><?=h($homeContent['meta']['hero_link_label'])?></a>
-                    </div>
-                </div>
-            </div>
+            <img class="carousel-image" src="<?=h($cover)?>" width="1680" height="1077" alt="<?=h($heroSlide['cover_alt'] ?? '')?>" <?=$slideIndex === 0 ? 'fetchpriority="high"' : 'loading="lazy" fetchpriority="low"'?>>
         </div>
         <?php endforeach; ?>
+        <div class="carousel-shade" aria-hidden="true"></div>
+    </div>
+    <div class="wrap carousel-content">
+        <div class="carousel-copy">
+            <h1 class="carousel-title"><?=h($meta['hero_title'])?></h1>
+            <p class="carousel-description"><?=h($meta['hero_intro'])?></p>
+            <div class="carousel-actions">
+                <a class="button" href="<?=h($meta['primary_href'])?>"><?=h($meta['primary_label'])?></a>
+                <a class="text-link light" href="#services"><?=h($meta['hero_link_label'])?></a>
+            </div>
+        </div>
     </div>
     <div class="wrap carousel-footer">
         <p class="carousel-positioning"><?=h($homeContent['meta']['hero_positioning'])?><br><strong><?=h($homeContent['meta']['hero_positioning_emphasis'])?></strong></p>

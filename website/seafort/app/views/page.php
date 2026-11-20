@@ -9,6 +9,17 @@ if ($contact) {
     $enquiryKind = $slug === 'careers' ? 'career' : 'quote';
     $enquiryForm = sf_enquiry_public_form($enquiryKind);
     $enquiryResult = sf_enquiry_handle($enquiryKind);
+    $enquiryActions = [];
+    if ($enquiryForm['enabled']) {
+        if (!$enquiryForm['email_only'] && empty($enquiryResult['success'])) {
+            $enquiryActions[] = ['href' => '#enquiry-panel', 'label' => $enquiryKind === 'career' ? 'Application form' : 'Project enquiry form'];
+        }
+        if ($enquiryForm['direct_email'] !== '') {
+            $emailAction = ['href' => 'mailto:'.rawurlencode($enquiryForm['direct_email']), 'label' => $enquiryForm['email_label']];
+            if ($enquiryForm['preview']) array_unshift($enquiryActions, $emailAction);
+            else $enquiryActions[] = $emailAction;
+        }
+    }
     $enquiryCsrf = $enquiryNonce = '';
     if ($enquiryForm['enabled'] && !$enquiryForm['email_only']) {
         $enquiryCsrf = sf_enquiry_csrf();
@@ -18,7 +29,15 @@ if ($contact) {
 }
 site_header($page['title'],$route,$page['intro']);
 ?>
-<main id="main"><section class="page-hero"><div class="wrap"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span><?=h($page['title'])?></span></nav><div class="page-hero-grid"><div class="page-hero-copy"><p class="eyebrow eyebrow-light"><?=h($page['eyebrow'])?></p><h1><?=h($page['title'])?></h1><p><?=h($page['intro'])?></p><a class="text-link light" href="<?=$contact?'#contact-details':'#page-details'?>"><?=$contact?'Get in Touch':(in_array($slug,['about','values'],true)?'Explore Our Approach':'Explore the Scope')?></a></div><figure class="page-hero-photo"><img src="<?=h($image)?>" alt="<?=h($alt)?>" width="870" height="816" fetchpriority="high"><?php if($slug==='marmaris'): ?><figcaption class="location-credit">Turunç, Marmaris district · <a href="https://commons.wikimedia.org/wiki/File:Turunc_panorama.jpg" rel="noreferrer">Photo: Przemysław Jahr / Wikimedia Commons</a> · Public domain.</figcaption><?php endif; ?></figure></div></div></section>
+<main id="main"><section class="page-hero"><div class="wrap"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span><?=h($page['title'])?></span></nav><div class="page-hero-grid"><div class="page-hero-copy"><p class="eyebrow eyebrow-light"><?=h($page['eyebrow'])?></p><h1><?=h($page['title'])?></h1><p><?=h($page['intro'])?></p>
+<?php if ($contact): ?>
+    <?php if ($enquiryActions): ?><div class="enquiry-hero-actions"><?php foreach ($enquiryActions as $i => $action): ?>
+        <a class="<?=$i===0?'button':'text-link light'?>" href="<?=h($action['href'])?>"><?=h($action['label'])?></a>
+    <?php endforeach; ?></div><?php endif; ?>
+<?php else: ?>
+    <a class="text-link light" href="#page-details"><?=in_array($slug,['about','values'],true)?'Explore Our Approach':'Explore the Scope'?></a>
+<?php endif; ?>
+</div><figure class="page-hero-photo"><img src="<?=h($image)?>" alt="<?=h($alt)?>" width="870" height="816" fetchpriority="high"><?php if($slug==='marmaris'): ?><figcaption class="location-credit">Turunç, Marmaris district · <a href="https://commons.wikimedia.org/wiki/File:Turunc_panorama.jpg" rel="noreferrer">Photo: Przemysław Jahr / Wikimedia Commons</a> · Public domain.</figcaption><?php endif; ?></figure></div></div></section>
 
 <?php if($slug==='services'): ?>
 <section class="section" id="page-details"><div class="wrap"><div class="section-intro"><div><p class="eyebrow"><?=h($page['detail_eyebrow'])?></p><h2><?=site_lines($page['detail_title'])?></h2></div><p class="section-description"><?=h($page['detail_intro'])?></p></div><div class="service-directory">

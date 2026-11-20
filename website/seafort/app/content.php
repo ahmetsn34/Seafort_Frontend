@@ -30,10 +30,28 @@ function sf_content_schema_merge(array $defaults, array $saved): array
     return $result;
 }
 
+function sf_content_snapshot(string $type, array $defaults, array $stored): array
+{
+    $content = sf_content_schema_merge($defaults, $stored);
+    if ($type === 'pages') {
+        foreach ($content['pages'] as &$page) {
+            if ($page['slug'] !== 'sustainability') continue;
+            foreach ($page['sustainability']['pillars']['items'] as &$pillar) {
+                if ($pillar['link_label'] === 'See our field work' && $pillar['link_href'] === '/references/') {
+                    $pillar['link_href'] = '/projects/';
+                }
+            }
+            unset($pillar);
+        }
+        unset($page);
+    }
+    return $content;
+}
+
 function sf_content_read(string $type): array
 {
     $defaults = sf_content_defaults($type);
-    return sf_content_schema_merge($defaults, sf_read_json($type . '.json', $defaults));
+    return sf_content_snapshot($type, $defaults, sf_read_json($type . '.json', $defaults));
 }
 
 function sf_site_settings(): array { return sf_content_read('settings'); }
@@ -131,8 +149,8 @@ function sf_save_content(string $type, array $input, string $revision): void
 {
     $defaults = sf_content_defaults($type);
     $validated = sf_content_validate_tree($defaults, $input);
-    sf_update_json($type . '.json', static function (array &$data) use ($defaults, $validated, $revision): void {
-        $current = sf_content_schema_merge($defaults, $data);
+    sf_update_json($type . '.json', static function (array &$data) use ($type, $defaults, $validated, $revision): void {
+        $current = sf_content_snapshot($type, $defaults, $data);
         if ($revision === '' || !hash_equals(sf_content_digest($current), $revision)) {
             throw new InvalidArgumentException('İçerik başka bir sekmede değiştirildi. Metninizi kopyalayın, sayfayı yenileyin ve son sürüm üzerinde düzenleyin. Değişiklikleriniz kaydedilmedi.');
         }

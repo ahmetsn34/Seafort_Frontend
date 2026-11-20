@@ -12,8 +12,8 @@
   <div class="fpu-copy"><p class="eyebrow"><?=h($c['fpu']['eyebrow'])?></p><h2 id="fpu-heading"><?=site_lines($c['fpu']['title'])?></h2><p class="fpu-intro"><?=h($c['fpu']['description'])?></p><p><?=h($c['fpu']['detail'])?></p><a class="button" href="<?=h($c['fpu']['link_href'])?>"><?=h($c['fpu']['label'])?></a></div>
   <figure class="fpu-media">
     <?php if($c['fpu']['video_url'] !== ''): ?>
+      <figcaption class="company-film-caption"><h3><?=h($c['fpu']['video_title'])?></h3><p><?=h($c['fpu']['video_caption'])?></p></figcaption>
       <video controls playsinline preload="none" poster="<?=h($c['fpu']['poster'])?>" aria-label="<?=h($c['fpu']['video_caption'])?>"><source src="<?=h($c['fpu']['video_url'])?>" type="video/mp4"><p>Your browser does not support this video. <a href="<?=h($c['fpu']['video_url'])?>">Open the video</a>.</p></video>
-      <figcaption><?=h($c['fpu']['video_caption'])?></figcaption>
     <?php else: ?>
       <img src="<?=h($c['fpu']['poster'])?>" alt="<?=h($c['fpu']['poster_alt'])?>" width="960" height="720" loading="lazy">
     <?php endif; ?>

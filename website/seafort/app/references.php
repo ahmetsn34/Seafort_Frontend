@@ -19,10 +19,33 @@ function sf_reference_defaults(): array
     ];
 }
 
+/** Fill old generic import labels only when the original seed ID and image still match. */
+function sf_reference_restore_logo_labels(array $logos): array
+{
+    static $seedLogos=null;
+    foreach ($logos as $index=>$logo) {
+        $image=(string)($logo['image']??'');
+        if (!preg_match('~^/assets/references/legacy-([0-9]{2})\.png$~D',$image,$match)) continue;
+        $placeholder='Reference logo '.$match[1];
+        if (($logo['name']??'')!==$placeholder && ($logo['image_alt']??'')!==$placeholder) continue;
+        if ($seedLogos===null) {
+            $seedFile=__DIR__.'/../seed/references.json';
+            $seed=is_readable($seedFile)?json_decode((string)file_get_contents($seedFile),true):[];
+            $seedLogos=array_column($seed['logos']??[],null,'id');
+        }
+        $source=$seedLogos[$logo['id']??'']??null;
+        if (($source['image']??'')!==$image) continue;
+        if (($logo['name']??'')===$placeholder) $logos[$index]['name']=$source['name'];
+        if (($logo['image_alt']??'')===$placeholder) $logos[$index]['image_alt']=($logos[$index]['name']??'')?:$source['image_alt'];
+    }
+    return $logos;
+}
+
 function sf_reference_normalise(array $data): array
 {
     $defaults=sf_reference_defaults();
     foreach (['logos','quotes'] as $type) $defaults[$type]=is_array($data[$type]??null)?array_values(array_filter($data[$type],'is_array')):[];
+    $defaults['logos']=sf_reference_restore_logo_labels($defaults['logos']);
     // Keep legacy sample records editable as drafts on every installation.
     foreach ($defaults['quotes'] as $index=>$quote) {
         if (($quote['status']??'')==='published' && sf_reference_sample_quote($quote)) {

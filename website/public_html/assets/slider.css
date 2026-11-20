@@ -1,11 +1,11 @@
 .hero-carousel{position:relative;background:var(--navy);color:#fff;overflow:hidden;isolation:isolate}
 .hero-carousel:focus-visible{outline-offset:-6px}
-.carousel-stage{position:relative}
-.carousel-slide{position:relative;min-height:760px;height:min(850px,94svh);overflow:hidden}
+.carousel-stage{position:absolute;inset:0}
+.hero-carousel .carousel-stage .carousel-slide{position:absolute;inset:0;min-height:0;height:100%;overflow:hidden}
 .carousel-image,.carousel-shade{position:absolute;inset:0;width:100%;height:100%}
 .carousel-image{object-fit:cover;object-position:65% 60%}
 .carousel-shade{background:linear-gradient(90deg,#082734f2 0%,#0b2e3dca 34%,#0b2e3d5c 66%,#0b2e3d2b 100%),linear-gradient(0deg,#082734bf 0%,transparent 45%);pointer-events:none}
-.carousel-content{position:relative;z-index:1;min-height:inherit;height:100%;display:flex;flex-direction:column;justify-content:center;padding-top:140px;padding-bottom:155px}
+.hero-carousel .carousel-content{position:relative;z-index:1;min-height:clamp(610px,86svh,800px);height:auto;display:flex;flex-direction:column;justify-content:center;padding-top:140px;padding-bottom:155px}
 .carousel-copy{max-width:870px}
 .carousel-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:27px;font-size:11px}
 .carousel-eyebrow>span{display:block;width:29px;height:1px;background:#71b9d9;flex-shrink:0}
@@ -39,10 +39,24 @@
 .carousel-scroll{display:flex;align-items:center;gap:15px;font-size:9px;letter-spacing:2px;color:#c2d4de}
 .carousel-scroll>span:last-child{display:grid;place-items:center;width:39px;height:39px;border:1px solid #ffffff61;border-radius:50%;font-size:18px;letter-spacing:0}
 .carousel-sr-only{position:absolute!important;left:0;top:0;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-@media(min-width:851px){.carousel-slide:not([hidden]) .carousel-copy{animation:carousel-content-enter .45s ease-out both}}
-@keyframes carousel-content-enter{from{opacity:.3;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+
 @media(max-width:1100px){.carousel-title{font-size:61px;max-width:780px;letter-spacing:-2px}.carousel-description{max-width:560px}.carousel-controls{gap:20px}.carousel-footer{bottom:29px}.carousel-actions{gap:28px}}
 @media(max-width:850px){.carousel-slide{height:auto;min-height:760px}.carousel-content{padding-top:175px;padding-bottom:180px;min-height:760px}.carousel-copy{max-width:670px}.carousel-title{font-size:clamp(43px,7.6vw,61px);letter-spacing:-1.9px}.carousel-description{font-size:13px;line-height:1.95;max-width:500px}.carousel-eyebrow{font-size:10px;letter-spacing:1.6px}.carousel-footer{align-items:flex-end;gap:20px;bottom:27px;padding-top:19px}.carousel-controls{gap:17px}.carousel-pagination{gap:5px}.carousel-dot{min-width:24px}.carousel-dot>span{width:23px}.carousel-counter{gap:8px}.carousel-playback{min-width:45px}.carousel-positioning{font-size:9px}.carousel-image{object-position:64% 60%}}
 @media(max-width:600px){.carousel-slide{min-height:800px}.carousel-content{padding-top:153px;padding-bottom:210px;min-height:800px;height:auto;justify-content:flex-start}.carousel-copy{width:100%}.carousel-title{font-size:43px;line-height:1.12;letter-spacing:-1.65px;max-width:420px;text-wrap:initial}.carousel-description{font-size:13px;line-height:1.9;max-width:390px;margin-top:23px}.carousel-eyebrow{font-size:8px;letter-spacing:1.5px;gap:9px;margin-bottom:23px;max-width:100%}.carousel-eyebrow>span{width:20px}.carousel-actions{align-items:flex-start;flex-direction:column;gap:21px;margin-top:28px}.carousel-actions .button{font-size:11px;min-height:50px;max-width:310px}.carousel-actions .text-link{font-size:11px}.carousel-footer{bottom:23px;display:grid;grid-template-columns:1fr;gap:17px;padding-top:17px}.carousel-positioning{font-size:9px;line-height:1.7}.carousel-positioning br{display:none}.carousel-positioning strong{margin-left:4px}.carousel-controls{width:100%;gap:15px;justify-content:space-between}.carousel-pagination{gap:6px}.carousel-dot{min-width:24px;padding-block:10px;min-height:38px}.carousel-dot>span{width:23px}.carousel-counter{font-size:9px;gap:7px}.carousel-counter>[data-current]{font-size:16px}.carousel-arrows{gap:7px}.carousel-arrow{width:37px;height:37px}.carousel-arrow svg{height:17px;width:17px}.carousel-playback{font-size:8px;gap:5px;min-width:39px;min-height:38px}.carousel-playback svg{width:10px;height:10px}.carousel-shade{background:linear-gradient(90deg,#082734eb 0%,#0b2e3d9c 100%),linear-gradient(0deg,#082734ef 0%,#08273400 70%)}.carousel-scroll{position:absolute;right:0;bottom:0}.carousel-scroll>span:first-child{display:none}}
 @media(max-width:360px){.carousel-title{font-size:38px}.carousel-description{font-size:12px}.carousel-controls{gap:10px}.carousel-counter{gap:5px}.carousel-playback>span{display:none}.carousel-playback{min-width:18px}.carousel-footer{gap:14px}}
 @media(prefers-reduced-motion:reduce){.carousel-slide:not([hidden]) .carousel-copy{animation:none}.carousel-dot>span,.carousel-arrow{transition:none}}
+
+.fpu-media .company-film-caption { padding: 20px 24px; }
+.company-film-caption h3 { color: #fff; font-size: 1.4rem; line-height: 1.25; margin: 0; }
+.company-film-caption p { margin: .4rem 0 0; }
+@media (max-width: 850px) {
+    .hero-carousel .carousel-content { min-height: clamp(530px, 79svh, 690px); padding-block: 128px 135px; }
+}
+@media (max-width: 600px) {
+    .hero-carousel .carousel-content { min-height: clamp(490px, 72svh, 630px); padding-block: 124px 110px; justify-content: center; }
+    .hero-carousel .carousel-actions { flex-direction: row; align-items: center; gap: 16px 22px; }
+    .hero-carousel .carousel-footer { display: flex; align-items: center; bottom: 20px; }
+    .hero-carousel .carousel-positioning { display: none; }
+    .hero-carousel .carousel-description { margin-top: 16px; }
+}

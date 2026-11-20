@@ -27,6 +27,10 @@
     clearTimer();
     if(!userPaused&&!hovering&&!focusInside&&!document.hidden)timer=window.setTimeout(()=>show(index+1,false),4500);
   }
+  function preloadNext(){
+    const image=slides[(index+1)%slides.length].querySelector('img');
+    if(image)image.loading='eager';
+  }
   function show(next,manual){
     index=(next+slides.length)%slides.length;
     slides.forEach((slide,i)=>{
@@ -38,9 +42,10 @@
     counter.textContent=String(index+1).padStart(2,'0');
     if(manual){
       userPaused=true;
-      announcement.textContent='Slide '+(index+1)+' of '+slides.length+'. '+slides[index].querySelector('.carousel-title').textContent;
+      announcement.textContent=[slides[index].getAttribute('aria-label'), slides[index].querySelector('img').alt].join('. ');
       updatePlayback();
     }
+    preloadNext();
     schedule();
   }
 
@@ -64,6 +69,7 @@
   carousel.addEventListener('focusout',event=>{focusInside=carousel.contains(event.relatedTarget);schedule();});
   document.addEventListener('visibilitychange',schedule);
   reducedMotion.addEventListener('change',event=>{if(event.matches){userPaused=true;updatePlayback();schedule();}});
+  preloadNext();
   updatePlayback();
   schedule();
 })();

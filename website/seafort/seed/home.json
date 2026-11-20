@@ -3,6 +3,9 @@
     "title": "Marine & Offshore Repair and Maintenance",
     "description": "Seafort supports marine and offshore projects with steelwork, repair, maintenance, equipment installation and technical services.",
     "hero_title": "Marine repair. Offshore support.",
+    "hero_intro": "Steel renewal, protective coatings and installation support for vessels and offshore structures.",
+    "primary_label": "Get a Quote",
+    "primary_href": "/get-a-quote/",
     "hero_link_label": "Explore Our Services",
     "hero_positioning": "From workshop preparation",
     "hero_positioning_emphasis": "to onboard installation."
@@ -58,6 +61,7 @@
     "poster": "/assets/video/seafort-introduction-en.jpg",
     "poster_alt": "Seafort marine and offshore company introduction",
     "video_url": "/assets/video/seafort-introduction-en.mp4",
+    "video_title": "Meet Seafort",
     "video_caption": "An introduction to Seafort, with photographs from marine and offshore projects.",
     "label": "Discuss FPU Steelwork",
     "link_href": "/get-a-quote/"
@@ -168,6 +172,33 @@
     "eyebrow": "PROJECTS",
     "title": "A closer look\nat the work.",
     "description": "Photographs and project notes from marine and offshore work.",
+    "activities_intro": "Field photographs of steel repair, coating and installation work.",
+    "activities": [
+      {
+        "title": "Steel & Structural Repair",
+        "body": "Grinding and finishing steel after welding.",
+        "image": "/assets/archive/steel-finishing.webp",
+        "image_alt": "Worker grinding steelwork from scaffold access",
+        "label": "Explore Repair Services",
+        "link_href": "/maintenance-repair/"
+      },
+      {
+        "title": "Surface Preparation & Coatings",
+        "body": "Preparing and coating hull surfaces.",
+        "image": "/assets/archive/hull-coating.webp",
+        "image_alt": "Hull coating work from an elevated platform",
+        "label": "Explore Coating Services",
+        "link_href": "/maintenance-repair/"
+      },
+      {
+        "title": "Equipment Installation",
+        "body": "Positioning and fitting equipment on board.",
+        "image": "/assets/archive/component-fit-up.webp",
+        "image_alt": "Personnel working around a component during installation",
+        "label": "Explore Fabrication",
+        "link_href": "/marine-services/"
+      }
+    ],
     "directory_eyebrow": "PROJECT JOURNAL",
     "directory_title": "Projects\nin focus.",
     "directory_intro": "Explore the work described and photographed by our team.",
